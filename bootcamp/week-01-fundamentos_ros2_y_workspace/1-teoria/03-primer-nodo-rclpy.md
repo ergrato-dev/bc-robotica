@@ -50,6 +50,11 @@ Cuatro pasos, siempre en este orden:
    igual sin esto, pero dejar handles de DDS sin cerrar explícitamente es un hábito que
    se paga caro en nodos más complejos (semana 04 en adelante, con executors)
 
+<img src="../0-assets/03-ciclo-vida-nodo.svg" alt="Ciclo de vida de un nodo ROS2: init, construir el nodo, spin procesando callbacks en bucle, destroy_node y shutdown">
+
+Vas a escribir estos cinco pasos, o su equivalente exacto en C++, en cada nodo de las
+próximas 19 semanas — vale la pena memorizarlos ahora.
+
 ## 3. Cómo se escribe: publisher con timer
 
 ```python

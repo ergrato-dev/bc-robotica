@@ -85,6 +85,14 @@ automático**. Cuando un nodo arranca, anuncia por la red local "yo publico en e
 X con el tipo Y", y cualquier nodo que se suscriba a X lo encuentra automáticamente. No
 hay proceso central que coordine esto — si un nodo se cae, el resto sigue funcionando.
 
+<img src="../0-assets/01-grafo-ros2.svg" alt="Dos nodos, uno en rclpy y otro en rclcpp, publicando y suscribiéndose al mismo topic a través del transporte DDS, sin nodo maestro">
+
+Nota algo importante en el diagrama: el nodo de la izquierda está en Python y el de la
+derecha en C++, y **ninguno de los dos lo sabe**. DDS no le pregunta a un nodo en qué
+lenguaje está escrito el otro — solo le importa el nombre del topic y el tipo de
+mensaje. Esta es la base técnica de por qué vas a poder mezclar `rclpy` y `rclcpp`
+libremente durante todo el bootcamp.
+
 ```python
 # ✅ Esto es TODO lo que rclpy necesita para que tu nodo aparezca en el grafo
 import rclpy

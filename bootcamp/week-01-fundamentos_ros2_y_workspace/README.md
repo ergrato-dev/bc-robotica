@@ -22,7 +22,9 @@ week-01-fundamentos_ros2_y_workspace/
 ├── README.md                       (este archivo)
 ├── rubrica-evaluacion.md
 ├── 0-assets/
-│   └── 01-grafo-ros2.svg
+│   ├── 01-grafo-ros2.svg
+│   ├── 02-workspace-colcon-flujo.svg
+│   └── 03-ciclo-vida-nodo.svg
 ├── 1-teoria/
 │   ├── 01-que-es-ros2-y-el-grafo-computacional.md
 │   ├── 02-workspace-colcon-y-paquetes.md

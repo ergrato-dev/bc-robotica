@@ -44,6 +44,8 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
+<img src="../0-assets/02-workspace-colcon-flujo.svg" alt="colcon build compila los paquetes de src, sin importar si son ament_python o ament_cmake, y genera build, install y log">
+
 `--symlink-install` crea enlaces simbólicos en vez de copiar archivos — así, si editas
 un archivo Python de tu paquete, el cambio se ve sin recompilar. Para C++ sí hace falta
 recompilar siempre: los enlaces solo ayudan con los ficheros no compilados

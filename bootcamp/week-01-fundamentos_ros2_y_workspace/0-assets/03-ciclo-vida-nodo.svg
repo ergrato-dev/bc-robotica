@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 260" role="img" aria-label="Ciclo de vida de un nodo ROS2: init, construir nodo, spin, destroy y shutdown">
+  <title>Ciclo de vida de un nodo ROS2</title>
+  <rect width="840" height="260" fill="#0d1117"/>
+
+  <!-- pasos -->
+  <g font-family="ui-monospace, monospace" font-size="12">
+    <rect x="20" y="90" width="140" height="60" rx="8" fill="#161b22" stroke="#4b8bbe" stroke-width="2"/>
+    <text x="90" y="115" text-anchor="middle" fill="#e6edf3" font-weight="700">rclpy.init()</text>
+    <text x="90" y="135" text-anchor="middle" fill="#8b949e" font-size="10">1 vez por proceso</text>
+
+    <rect x="200" y="90" width="140" height="60" rx="8" fill="#161b22" stroke="#4b8bbe" stroke-width="2"/>
+    <text x="270" y="115" text-anchor="middle" fill="#e6edf3" font-weight="700">Node()</text>
+    <text x="270" y="135" text-anchor="middle" fill="#8b949e" font-size="10">crea publishers/subs</text>
+
+    <rect x="380" y="90" width="160" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="460" y="115" text-anchor="middle" fill="#3fb950" font-weight="700">rclpy.spin(node)</text>
+    <text x="460" y="135" text-anchor="middle" fill="#8b949e" font-size="10">procesa callbacks</text>
+
+    <rect x="580" y="90" width="140" height="60" rx="8" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+    <text x="650" y="115" text-anchor="middle" fill="#e6edf3" font-weight="700">destroy_node()</text>
+    <text x="650" y="135" text-anchor="middle" fill="#8b949e" font-size="10">limpieza explícita</text>
+
+    <rect x="740" y="90" width="90" height="60" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="785" y="115" text-anchor="middle" fill="#e6edf3" font-weight="700" font-size="11">shutdown()</text>
+    <text x="785" y="135" text-anchor="middle" fill="#8b949e" font-size="9">cierra contexto</text>
+  </g>
+
+  <!-- flechas secuencia -->
+  <line x1="160" y1="120" x2="200" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#arrowZ)"/>
+  <line x1="340" y1="120" x2="380" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#arrowZ)"/>
+  <line x1="540" y1="120" x2="580" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#arrowZ)"/>
+  <line x1="720" y1="120" x2="740" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#arrowZ)"/>
+
+  <!-- loop en spin (callbacks repetidos) -->
+  <path d="M 430 90 C 430 50, 490 50, 490 90" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#arrowZ)"/>
+  <text x="460" y="55" text-anchor="middle" fill="#3fb950" font-family="ui-monospace, monospace" font-size="10">timer / topic callback</text>
+
+  <defs>
+    <marker id="arrowZ" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <text x="420" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#e6edf3">Los cinco pasos se repiten en todo nodo que escribas las próximas 19 semanas</text>
+  <text x="420" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#8b949e">rclcpp sigue la misma secuencia: init → Node → spin → (shutdown, sin destroy_node explícito)</text>
+</svg>
