@@ -1,0 +1,24 @@
+# Estilo del bootcamp Robótica Zero to Hero. Base Google con dos ajustes:
+# columna 100 (los ejemplos con comentarios en español no caben en 80) y
+# punteros/referencias pegados al tipo (int* p, const std::string& s).
+BasedOnStyle: Google
+Standard: c++17
+ColumnLimit: 100
+IndentWidth: 2
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+IncludeBlocks: Regroup
+IncludeCategories:
+  # 1. Header propio del .cpp (main include) lo detecta clang-format solo.
+  - Regex: '^"'
+    Priority: 1
+  # 2. Paquetes ROS2 (rclcpp, std_msgs, geometry_msgs, nav2_*, moveit_*...).
+  - Regex: '^<(rclcpp|std_msgs|geometry_msgs|sensor_msgs|nav_msgs|nav2_|moveit_|tf2_|rclcpp_action|rclcpp_components)'
+    Priority: 2
+  # 3. Estándar.
+  - Regex: '^<[a-z_]+>'
+    Priority: 3
