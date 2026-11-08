@@ -1,19 +1,21 @@
 """Tests del Ejercicio 01. No los edites: pasan solos al completar los pasos
 del starter (sensor_publisher.py, sensor_listener.py)."""
 
+import os
 import time
 
 import pytest
 import rclpy
-from std_msgs.msg import String
-
 from ejercicio01_pubsub_py.sensor_listener import SensorListener
 from ejercicio01_pubsub_py.sensor_publisher import SensorPublisher
+from std_msgs.msg import String
 
 
 @pytest.fixture(autouse=True)
 def ros_context():
-    rclpy.init()
+    # Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+    # y así los nodos de otros tests no se mezclan con los de este.
+    rclpy.init(domain_id=os.getpid() % 100 + 1)
     yield
     rclpy.shutdown()
 
@@ -46,7 +48,9 @@ def test_publica_mensajes():
     received = []
 
     probe = rclpy.create_node("probe_publica_mensajes")
-    probe.create_subscription(String, "sensor/state", lambda m: received.append(m.data), 10)
+    probe.create_subscription(
+        String, "sensor/state", lambda m: received.append(m.data), 10
+    )
 
     try:
         ok = _spin_until([pub_node, probe], lambda: len(received) >= 1, timeout_s=3.0)

@@ -1,5 +1,6 @@
 """Tests del publisher Python del Ejercicio 03. No los edites."""
 
+import os
 import time
 
 import pytest
@@ -10,7 +11,9 @@ from ejercicio03_reading_py.reading_publisher import ReadingPublisher
 
 @pytest.fixture(autouse=True)
 def ros_context():
-    rclpy.init()
+    # Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+    # y así los nodos de otros tests no se mezclan con los de este.
+    rclpy.init(domain_id=os.getpid() % 100 + 1)
     yield
     rclpy.shutdown()
 

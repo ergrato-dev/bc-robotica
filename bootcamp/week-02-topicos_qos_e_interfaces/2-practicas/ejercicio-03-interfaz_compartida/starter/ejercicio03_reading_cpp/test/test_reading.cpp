@@ -5,6 +5,7 @@
 #include <chrono>
 #include <memory>
 #include <thread>
+#include <unistd.h>
 
 using namespace std::chrono_literals;
 using ejercicio03_interfaces::msg::SensorReading;
@@ -34,7 +35,11 @@ TEST(ReadingListenerTest, RecibeYClasificaLecturas) {
 }
 
 int main(int argc, char** argv) {
-  rclcpp::init(argc, argv);
+  // Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+  // y así los nodos de otros tests no se mezclan con los de este.
+  rclcpp::InitOptions options;
+  options.set_domain_id(static_cast<size_t>(getpid() % 100 + 1));
+  rclcpp::init(argc, argv, options);
   ::testing::InitGoogleTest(&argc, argv);
   int result = RUN_ALL_TESTS();
   rclcpp::shutdown();

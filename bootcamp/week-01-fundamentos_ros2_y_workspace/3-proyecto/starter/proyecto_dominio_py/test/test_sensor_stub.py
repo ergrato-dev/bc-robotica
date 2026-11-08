@@ -1,15 +1,18 @@
 """Test mínimo del proyecto: el publisher existe. Amplíalo cuando renombres
 el topic a tu dominio."""
 
+import os
+
 import pytest
 import rclpy
-
 from proyecto_dominio_py.sensor_stub import SensorStub
 
 
 @pytest.fixture(autouse=True)
 def ros_context():
-    rclpy.init()
+    # Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+    # y así los nodos de otros tests no se mezclan con los de este.
+    rclpy.init(domain_id=os.getpid() % 100 + 1)
     yield
     rclpy.shutdown()
 
