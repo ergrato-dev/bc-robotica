@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 380" role="img" aria-label="Secuencia de un servicio: el cliente envía la request, el server ejecuta su callback y devuelve la response al mismo cliente. Mientras espera, el cliente sigue haciendo spin">
+  <title>Servicio: request y response</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <rect width="840" height="380" fill="#0d1117"/>
+  <text x="420" y="34" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">Una petición, una respuesta, siempre al mismo cliente</text>
+  <rect x="90" y="60" width="200" height="50" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="190" y="82" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="15" font-weight="700" fill="#e6edf3">Cliente</text>
+  <text x="190" y="100" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#79c0ff">enable_client</text>
+  <rect x="550" y="60" width="200" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="650" y="82" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="15" font-weight="700" fill="#e6edf3">Server</text>
+  <text x="650" y="100" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#3fb950">enable_server</text>
+  <line x1="190" y1="110" x2="190" y2="350" stroke="#30363d" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="650" y1="110" x2="650" y2="350" stroke="#30363d" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="190" y1="150" x2="645" y2="150" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="420" y="140" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">1. request  <tspan font-family="ui-monospace, Consolas, monospace" fill="#79c0ff">{data: true}</tspan></text>
+  <text x="200" y="175" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#79c0ff">call_async() devuelve un Future vacío</text>
+  <rect x="560" y="180" width="180" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="650" y="205" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">2. callback del server</text>
+  <text x="650" y="226" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">rellena la response</text>
+  <rect x="100" y="195" width="180" height="60" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="190" y="220" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">el cliente sigue</text>
+  <text x="190" y="240" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">haciendo spin</text>
+  <line x1="650" y1="285" x2="195" y2="285" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="420" y="275" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">3. response  <tspan font-family="ui-monospace, Consolas, monospace" fill="#3fb950">{success: true, message: 'habilitado'}</tspan></text>
+  <text x="200" y="315" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#79c0ff">el Future se completa: future.result()</text>
+  <text x="420" y="350" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">Un solo server por nombre; muchos clientes. Cada response vuelve solo a quien la pidió.</text>
+</svg>

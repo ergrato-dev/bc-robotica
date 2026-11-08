@@ -95,6 +95,6 @@ La capa del proyecto del dominio (`3-proyecto/`):
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Glosario](5-glosario/README.md) | **Rúbrica** | Semana 03 (pendiente de publicar) |
+| [Glosario](5-glosario/README.md) | **Rúbrica** | [Semana 03](../week-03-servicios_acciones_y_parametros/README.md) |
 
 ← [Volver a la Semana 02](README.md)

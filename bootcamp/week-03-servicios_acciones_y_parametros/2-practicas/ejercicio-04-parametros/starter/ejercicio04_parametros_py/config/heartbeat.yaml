@@ -1,0 +1,6 @@
+# Parámetros del nodo heartbeat. La clave de primer nivel es el nombre del nodo;
+# ros__parameters (con dos guiones bajos) es obligatorio.
+heartbeat:
+  ros__parameters:
+    robot_name: "explorer"
+    period_s: 0.5
