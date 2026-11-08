@@ -98,6 +98,6 @@ La capa del proyecto del dominio (`3-proyecto/`):
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Glosario](5-glosario/README.md) | **Rúbrica** | Semana 05 (pendiente de publicar) |
+| [Glosario](5-glosario/README.md) | **Rúbrica** | [Semana 05](../week-05-testing_lint_rosbag2_y_depuracion/README.md) |
 
 ← [Volver a la Semana 04](README.md)

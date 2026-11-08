@@ -55,7 +55,7 @@ cd bootcamp/week-01-fundamentos_ros2_y_workspace
 | **Percepción** | OpenCV, `cv_bridge`, PCL, YOLO/`ultralytics` |
 | **Testing** | `colcon test`, `pytest`/`launch_testing`, `gtest` |
 | **Avanzado** | `ros2_tracing`, SROS2, micro-ROS |
-| **Herramientas** | Docker 27.5.1, `uv`, `ruff`, `mypy`, `clang-format` |
+| **Herramientas** | Docker 27.5.1, `uv`, `ruff`, `mypy`, `clang-format`, `clang-tidy` |
 
 Ver [stack-versions.md](stack-versions.md) para versiones detalladas pinneadas.
 

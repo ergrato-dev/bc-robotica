@@ -16,7 +16,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 | [02](week-02-topicos_qos_e_interfaces/README.md) | QoS profiles, `.msg` custom (`rosidl`) | ✅ |
 | [03](week-03-servicios_acciones_y_parametros/README.md) | Servicios, acciones, parámetros | ✅ |
 | [04](week-04-executors_composicion_y_lifecycle/README.md) | Executors, callback groups, component containers, lifecycle nodes | ✅ |
-| 05 | `pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor` | ⬜ |
+| [05](week-05-testing_lint_rosbag2_y_depuracion/README.md) | `pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor` | ✅ |
 | 06 | Launch files, TF2, URDF/xacro | ⬜ |
 
 ### Fase 2 — Matemáticas, simulación y control (S07-12, 72 h)

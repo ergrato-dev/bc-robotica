@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" role="img" aria-label="Método de depuración en cuatro preguntas, en orden. Uno: existe el topic y lo usan los dos nodos con el mismo nombre; se comprueba con ros2 topic list y ros2 node info. Dos: se conectan, es decir, el QoS es compatible; se comprueba con ros2 topic info -v y ros2 doctor. Tres: llegan mensajes; se comprueba con ros2 topic echo y ros2 topic hz. Cuatro: el callback hace lo que crees; se comprueba con el log en nivel debug y leyendo el traceback. Si la respuesta es no, el fallo está en ese nivel; si es sí, se pasa a la siguiente pregunta">
+  <title>Método de depuración en cuatro preguntas</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker></defs>
+  <rect width="860" height="440" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif" font-size="18" font-weight="700" fill="#e6edf3">"No llega nada": cuatro preguntas, en orden</text>
+  <g font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif">
+    <rect x="20" y="60" width="420" height="70" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="40" y="90" font-size="15" font-weight="700" fill="#e6edf3">1 · ¿Existe el topic y lo usan los dos?</text>
+    <text x="40" y="114" font-size="13" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">ros2 topic list · ros2 node info</text>
+    <path d="M440 95 L550 95" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="495" y="87" text-anchor="middle" font-size="12" fill="#f85149">no</text>
+    <rect x="555" y="73" width="295" height="44" rx="8" fill="#21262d" stroke="#f85149"/>
+    <rect x="20" y="152" width="420" height="70" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="40" y="182" font-size="15" font-weight="700" fill="#e6edf3">2 · ¿Se conectan? (QoS compatible)</text>
+    <text x="40" y="206" font-size="13" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">ros2 topic info -v · ros2 doctor</text>
+    <path d="M440 187 L550 187" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="495" y="179" text-anchor="middle" font-size="12" fill="#f85149">no</text>
+    <rect x="555" y="165" width="295" height="44" rx="8" fill="#21262d" stroke="#f85149"/>
+    <rect x="20" y="244" width="420" height="70" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="40" y="274" font-size="15" font-weight="700" fill="#e6edf3">3 · ¿Llegan mensajes?</text>
+    <text x="40" y="298" font-size="13" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">ros2 topic echo · ros2 topic hz</text>
+    <path d="M440 279 L550 279" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="495" y="271" text-anchor="middle" font-size="12" fill="#f85149">no</text>
+    <rect x="555" y="257" width="295" height="44" rx="8" fill="#21262d" stroke="#f85149"/>
+    <rect x="20" y="336" width="420" height="70" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="40" y="366" font-size="15" font-weight="700" fill="#e6edf3">4 · ¿El callback hace lo que crees?</text>
+    <text x="40" y="390" font-size="13" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">--log-level debug · traceback</text>
+    <path d="M440 371 L550 371" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+    <text x="495" y="363" text-anchor="middle" font-size="12" fill="#f85149">no</text>
+    <rect x="555" y="349" width="295" height="44" rx="8" fill="#21262d" stroke="#f85149"/>
+    <text x="702.5" y="100" text-anchor="middle" font-size="13" fill="#e6edf3">fallo aquí: nombre o namespace distinto</text>
+    <path d="M230 130 L230 149" stroke="#3fb950" stroke-width="2" marker-end="url(#a)"/><text x="242" y="145" font-size="12" fill="#3fb950">sí</text>
+    <text x="702.5" y="192" text-anchor="middle" font-size="13" fill="#e6edf3">fallo aquí: reliability o durability</text>
+    <path d="M230 222 L230 241" stroke="#3fb950" stroke-width="2" marker-end="url(#a)"/><text x="242" y="237" font-size="12" fill="#3fb950">sí</text>
+    <text x="702.5" y="284" text-anchor="middle" font-size="13" fill="#e6edf3">fallo aquí: el emisor no publica</text>
+    <path d="M230 314 L230 333" stroke="#3fb950" stroke-width="2" marker-end="url(#a)"/><text x="242" y="329" font-size="12" fill="#3fb950">sí</text>
+    <text x="702.5" y="376" text-anchor="middle" font-size="13" fill="#e6edf3">fallo aquí: lógica o excepción</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+# Chequeos de clang-tidy de este paquete. clang-tidy busca este archivo
+# subiendo desde cada .cpp. "-*" apaga todo y después se encienden familias:
+#   bugprone-*     fallos probables (conversiones que pierden datos...)
+#   performance-*  copias innecesarias
+#   modernize-*    C++ antiguo con alternativa moderna (solo dos chequeos)
+#   readability-braces-around-statements  if/for sin llaves
+Checks: >-
+  -*,
+  bugprone-*,
+  performance-*,
+  modernize-loop-convert,
+  modernize-use-nullptr,
+  readability-braces-around-statements
+# Cualquier aviso cuenta como error: así el test falla.
+WarningsAsErrors: "*"

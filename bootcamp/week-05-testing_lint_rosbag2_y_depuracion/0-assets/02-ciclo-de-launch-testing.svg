@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 330" role="img" aria-label="Ciclo de un test de launch_testing. Uno: generate_test_description arranca los procesos. Dos: ReadyToTest da la salida. Tres: los tests activos corren con los nodos vivos y pueden leer su salida con proc_output. Cuatro: launch_testing para cada proceso con SIGINT, como un Ctrl+C. Cinco: los tests post_shutdown_test revisan los códigos de salida con proc_info">
+  <title>Ciclo de un test con launch_testing</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <rect width="860" height="330" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif" font-size="18" font-weight="700" fill="#e6edf3">Qué ocurre en un test de launch_testing</text>
+  <g font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif" text-anchor="middle">
+    <rect x="20" y="70" width="150" height="110" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="95" y="98" font-size="15" font-weight="700" fill="#e6edf3">1 · Arranque</text>
+    <text x="95" y="124" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">generate_test_</text><text x="95" y="140" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">description()</text>
+    <text x="95" y="164" font-size="12" fill="#8b949e">lanza los nodos</text>
+    <rect x="190" y="70" width="150" height="110" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="265" y="98" font-size="15" font-weight="700" fill="#e6edf3">2 · Salida</text>
+    <text x="265" y="130" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">ReadyToTest()</text>
+    <text x="265" y="160" font-size="12" fill="#8b949e">ya pueden empezar</text>
+    <rect x="360" y="70" width="150" height="110" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="435" y="98" font-size="15" font-weight="700" fill="#e6edf3">3 · Tests activos</text>
+    <text x="435" y="124" font-size="12" fill="#8b949e">clases normales</text>
+    <text x="435" y="146" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">proc_output</text>
+    <text x="435" y="166" font-size="12" fill="#8b949e">nodos vivos</text>
+    <rect x="530" y="70" width="150" height="110" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <text x="605" y="98" font-size="15" font-weight="700" fill="#e6edf3">4 · Parada</text>
+    <text x="605" y="130" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">SIGINT</text>
+    <text x="605" y="160" font-size="12" fill="#8b949e">como un Ctrl+C</text>
+    <rect x="700" y="70" width="140" height="110" rx="10" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+    <text x="770" y="98" font-size="15" font-weight="700" fill="#e6edf3">5 · Revisión</text>
+    <text x="770" y="124" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">post_shutdown</text><text x="770" y="140" font-size="12" fill="#79c0ff" font-family="ui-monospace, &quot;JetBrains Mono&quot;, Consolas, monospace">proc_info</text>
+    <text x="770" y="164" font-size="12" fill="#8b949e">códigos de salida</text>
+  </g>
+  <g stroke="#8b949e" stroke-width="2"><path d="M170 125 L188 125" marker-end="url(#a)"/><path d="M340 125 L358 125" marker-end="url(#a)"/><path d="M510 125 L528 125" marker-end="url(#a)"/><path d="M680 125 L698 125" marker-end="url(#a)"/></g>
+  <rect x="95" y="214" width="510" height="22" rx="4" fill="#21262d" stroke="#3fb950"/>
+  <text x="350" y="230" text-anchor="middle" font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif" font-size="12" fill="#e6edf3">procesos de los nodos en marcha</text>
+  <g font-family="Inter, Roboto, &quot;Segoe UI&quot;, system-ui, sans-serif" font-size="13" fill="#8b949e">
+    <text x="20" y="278">Un test activo que falla no para los nodos: la parada y la revisión ocurren siempre.</text>
+    <text x="20" y="302">Un traceback deja el proceso con código 1, y la revisión lo detecta aunque los tests activos pasen.</text>
+  </g>
+</svg>

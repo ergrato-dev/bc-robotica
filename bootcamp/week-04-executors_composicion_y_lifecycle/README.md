@@ -118,6 +118,6 @@ correr paquetes en paralelo sin que sus nodos se mezclen.
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Semana 03](../week-03-servicios_acciones_y_parametros/README.md) | **Semana 04** | Semana 05 (pendiente de publicar) |
+| [Semana 03](../week-03-servicios_acciones_y_parametros/README.md) | **Semana 04** | [Semana 05](../week-05-testing_lint_rosbag2_y_depuracion/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)

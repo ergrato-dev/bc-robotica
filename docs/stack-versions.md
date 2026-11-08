@@ -61,7 +61,8 @@ Este documento define las versiones oficiales de todas las tecnologías usadas e
 | `ruff` | `0.8.6` | Lint + format Python |
 | `mypy` | `1.13.0` | Tipado estático Python |
 | `pytest` + `launch_testing` | `ros-jazzy-launch-testing-ament-cmake` (apt) | Tests de nodos/launch Python |
-| `clang-format` | `18.1.3` | Formato C++, `.clang-format` de la raíz es la única verdad |
+| `clang-format` | `18.1.3` (apt `clang-format`) | Formato C++, `.clang-format` de la raíz es la única verdad |
+| `clang-tidy` | `18.1.3` (apt `clang-tidy`) | Análisis estático C++ (semana 05) |
 | `gtest` / `ament_cmake_gtest` | `ros-dev-tools` (apt) | Tests de nodos C++ |
 | `ros2_tracing` | `ros-jazzy-ros2trace`, `ros-jazzy-tracetools-launch` (apt) | Perfilado de latencia (semana 28) |
 | SROS2 | `ros-jazzy-sros2` (apt) | Seguridad DDS (semana 29) |
@@ -75,7 +76,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     ROS_DISTRO=jazzy
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-colcon-common-extensions ros-dev-tools python3-opencv \
+    python3-colcon-common-extensions ros-dev-tools python3-opencv clang-format clang-tidy \
     ros-jazzy-navigation2 ros-jazzy-slam-toolbox ros-jazzy-robot-localization \
     ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control \
     ros-jazzy-moveit ros-jazzy-moveit-task-constructor-core \

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>proyecto_dominio_py</name>
+  <version>0.5.0</version>
+  <description>Proyecto del dominio — capa Python (Semana 04)</description>
+  <maintainer email="ergrato-dev@example.com">bc-robotica</maintainer>
+  <license>CC-BY-NC-SA-4.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>rcl_interfaces</exec_depend>
+  <exec_depend>lifecycle_msgs</exec_depend>
+  <exec_depend>proyecto_dominio_interfaces</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>launch</test_depend>
+  <test_depend>launch_ros</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>launch_testing_ros</test_depend>
+  <test_depend>rosbag2_py</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
