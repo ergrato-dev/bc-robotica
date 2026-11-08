@@ -102,6 +102,64 @@ clase como callback — en Python `self._on_timer` ya es un objeto invocable con
 ligado; en C++ hay que ligarlo explícitamente. Una lambda (`[this]() { on_timer(); }`)
 hace lo mismo y es igual de válida — verás ambos estilos en el ecosistema ROS2.
 
+### 3.2 El otro extremo: subscriber
+
+El mismo `sensor_listener` de la teoría 03, en C++:
+
+```cpp
+#include <functional>
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+class SensorListener : public rclcpp::Node {
+public:
+  SensorListener() : Node("sensor_listener") {
+    // std::placeholders::_1 es "el primer argumento que pasará ROS2": el mensaje.
+    subscription_ = create_subscription<std_msgs::msg::String>(
+        "sensor/state", 10,
+        std::bind(&SensorListener::on_message, this, std::placeholders::_1));
+  }
+
+private:
+  void on_message(const std_msgs::msg::String &msg) const {
+    RCLCPP_INFO(get_logger(), "Recibido: %s", msg.data.c_str());
+  }
+
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+};
+
+int main(int argc, char *argv[]) {
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<SensorListener>());
+  rclcpp::shutdown();
+  return 0;
+}
+```
+
+| Concepto | `rclpy` | `rclcpp` |
+|---|---|---|
+| Crear subscriber | `self.create_subscription(String, "sensor/state", cb, 10)` | `create_subscription<std_msgs::msg::String>("sensor/state", 10, cb)` |
+| Orden de argumentos | tipo, topic, callback, depth | (tipo como plantilla), topic, depth, callback |
+| Firma del callback | `def cb(self, msg: String) -> None` | `void cb(const std_msgs::msg::String &msg) const` |
+| Guardar la referencia | `self._subscription = ...` | miembro `subscription_` |
+
+Ojo al orden: en C++ el `depth` va **antes** del callback; en Python, después. Es el
+error de compilación más frecuente al portar un nodo de un lenguaje al otro.
+
+Recibir el mensaje por `const &` evita copiarlo. Con un `String` da igual; con una nube
+de puntos de varios MB (Semana 22) es la diferencia entre llegar a la frecuencia o no.
+
+Como el topic es el mismo, puedes **mezclar lenguajes**: publisher C++ y listener Python
+se conectan sin cambiar nada, porque ambos hablan DDS por debajo:
+
+```bash
+# Terminal 1
+ros2 run ejercicio02_pubsub_cpp sensor_publisher
+# Terminal 2
+ros2 run ejercicio01_pubsub_py sensor_listener
+# [INFO] [...] [sensor_listener]: Recibido: lectura #3
+```
+
 ## 4. Antipatrones
 
 - ❌ **Guardar el nodo en un `rclcpp::Node` (valor) en vez de `shared_ptr<Node>`.**
@@ -138,3 +196,13 @@ hace lo mismo y es igual de válida — verás ambos estilos en el ecosistema RO
 - [ ] Entiendo por qué `rclcpp::spin` necesita un `shared_ptr`, no un valor
 - [ ] Comparé mi nodo `rclcpp` con el `rclpy` equivalente y ubico cada diferencia de
       sintaxis con lo que hace en Python
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [03 · Primer nodo rclpy](03-primer-nodo-rclpy.md) | **04 · Primer nodo rclcpp** | [05 · Introspección CLI y remapping](05-introspeccion-cli-nombres-y-remapping.md) |
+
+← [Volver a la Semana 01](../README.md)

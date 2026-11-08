@@ -183,3 +183,13 @@ paquetes de ROS2 — sin él, el compilador no encontraría los headers de `rclc
 - [ ] Sé cuándo un paquete es `ament_python` y cuándo `ament_cmake`
 - [ ] Compilé un workspace con `colcon build --symlink-install` y lo activé con
       `source install/setup.bash`
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [01 · Qué es ROS2](01-que-es-ros2-y-el-grafo-computacional.md) | **02 · Workspace y colcon** | [03 · Primer nodo rclpy](03-primer-nodo-rclpy.md) |
+
+← [Volver a la Semana 01](../README.md)

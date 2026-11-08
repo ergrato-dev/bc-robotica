@@ -121,7 +121,8 @@ de bootcamp están en la misma WiFi con `ROS_DOMAIN_ID=0`, sus grafos se mezclan
 export ROS_DOMAIN_ID=42
 ```
 
-Esto se retoma como regla de seguridad en `docs/tracks.md` y `SECURITY.md`.
+Se retoma en la Semana 27 (varios robots en el mismo grafo) y en la 29 (SROS2,
+seguridad del grafo).
 
 ## 4. Antipatrones
 
@@ -151,3 +152,13 @@ Esto se retoma como regla de seguridad en `docs/tracks.md` y `SECURITY.md`.
       "maestro" en ROS2
 - [ ] Sé qué hace `ROS_DOMAIN_ID` y por qué me importa en un aula compartida
 - [ ] Corrí `ros2 doctor` y `rqt_graph` en mi entorno al menos una vez
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Semana 01](../README.md) | **01 · Qué es ROS2** | [02 · Workspace y colcon](02-workspace-colcon-y-paquetes.md) |
+
+← [Volver a la Semana 01](../README.md)

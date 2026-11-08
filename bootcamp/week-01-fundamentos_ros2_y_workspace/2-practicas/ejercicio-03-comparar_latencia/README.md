@@ -5,7 +5,7 @@ si hay una diferencia observable de frecuencia/latencia entre un publisher Pytho
 C++ publicando el mismo mensaje al mismo ritmo nominal (0.5 s).
 
 Esta es la primera vez del bootcamp que **mides** en vez de asumir — hábito que se
-repite en las semanas 09, 11 y 17.
+repite en las semanas 12, 18, 24 y 28.
 
 ## Paso 1: Publisher Python, medir con la CLI
 
@@ -47,11 +47,21 @@ los pasos 1 y 2.
    lenguajes?
 3. Con solo este ejercicio, ¿es suficiente evidencia para decidir "siempre uso C++
    porque es más rápido"? ¿Qué te falta medir para una decisión real? (Esto se retoma
-   con benchmarking formal en la Semana 17/Track A y B — semana de integración y
-   rendimiento).
+   con benchmarking formal en los checkpoints de las semanas 18 y 24, y con perfilado
+   de latencia en la Semana 28).
 
 ## Checklist
 
 - [ ] Medí la frecuencia del publisher Python con `ros2 topic hz`
 - [ ] Medí la frecuencia del publisher C++ con `ros2 topic hz`
 - [ ] Escribí mis observaciones y respuestas en `3-proyecto/README.md`
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Ejercicio 02](../ejercicio-02-publisher_subscriber_cpp/README.md) | **Ejercicio 03** | [Ejercicio 04](../ejercicio-04-explorar_grafo_cli/README.md) |
+
+← [Volver a la Semana 01](../../README.md)

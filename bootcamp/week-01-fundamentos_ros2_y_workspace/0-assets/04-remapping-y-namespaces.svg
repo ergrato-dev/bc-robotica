@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" role="img" aria-label="Remapping y namespaces: sin argumentos, talker y listener se conectan por /chatter; con namespace robot1 el talker publica en /robot1/chatter y el listener solo lo recibe si se remapea su topic a ese nombre">
+  <title>Remapping y namespaces en la línea de comandos</title>
+  <rect width="840" height="440" fill="#0d1117"/>
+
+  <!-- Fila 1: sin argumentos -->
+  <text x="40" y="44" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">1. Sin argumentos: los nombres coinciden y el grafo se conecta</text>
+  <rect x="40" y="64" width="200" height="76" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="140" y="96" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/talker</text>
+  <text x="140" y="120" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">ros2 run demo_nodes_cpp talker</text>
+  <rect x="320" y="82" width="200" height="40" rx="20" fill="#21262d" stroke="#79c0ff" stroke-width="2"/>
+  <text x="420" y="107" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#79c0ff">/chatter</text>
+  <rect x="600" y="64" width="200" height="76" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="700" y="96" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/listener</text>
+  <text x="700" y="120" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">ros2 run demo_nodes_cpp listener</text>
+  <line x1="240" y1="102" x2="312" y2="102" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="312,96 322,102 312,108" fill="#3fb950"/>
+  <line x1="520" y1="102" x2="592" y2="102" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="592,96 602,102 592,108" fill="#3fb950"/>
+
+  <!-- Fila 2: namespace en el talker, listener sin tocar -->
+  <text x="40" y="184" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">2. Namespace solo en el talker: los nombres ya no coinciden</text>
+  <rect x="40" y="204" width="200" height="76" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="140" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/robot1/talker</text>
+  <text x="140" y="260" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">--ros-args -r __ns:=/robot1</text>
+  <rect x="300" y="222" width="240" height="40" rx="20" fill="#21262d" stroke="#79c0ff" stroke-width="2"/>
+  <text x="420" y="247" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#79c0ff">/robot1/chatter</text>
+  <rect x="600" y="204" width="200" height="76" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="700" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/listener</text>
+  <text x="700" y="260" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#f85149">escucha /chatter: nada llega</text>
+  <line x1="240" y1="242" x2="292" y2="242" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="292,236 302,242 292,248" fill="#3fb950"/>
+  <line x1="540" y1="242" x2="592" y2="242" stroke="#f85149" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="566" y="232" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#f85149">✕</text>
+
+  <!-- Fila 3: remapping en el listener -->
+  <text x="40" y="324" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">3. Remapping en el listener: se reconecta sin tocar el código</text>
+  <rect x="40" y="344" width="200" height="76" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="140" y="376" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/robot1/talker</text>
+  <text x="140" y="400" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">--ros-args -r __ns:=/robot1</text>
+  <rect x="300" y="362" width="240" height="40" rx="20" fill="#21262d" stroke="#79c0ff" stroke-width="2"/>
+  <text x="420" y="387" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#79c0ff">/robot1/chatter</text>
+  <rect x="600" y="344" width="200" height="76" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="700" y="376" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="15" fill="#e6edf3">/listener</text>
+  <text x="700" y="400" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#3fb950">-r chatter:=/robot1/chatter</text>
+  <line x1="240" y1="382" x2="292" y2="382" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="292,376 302,382 292,388" fill="#3fb950"/>
+  <line x1="540" y1="382" x2="592" y2="382" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="592,376 602,382 592,388" fill="#3fb950"/>
+</svg>

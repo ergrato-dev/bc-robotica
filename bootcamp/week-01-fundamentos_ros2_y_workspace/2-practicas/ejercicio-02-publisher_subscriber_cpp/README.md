@@ -77,3 +77,13 @@ ros2 topic hz /sensor/state
 - [ ] Compila sin warnings con `-Wall -Wextra -Wpedantic -Werror`
 - [ ] Probé el publisher C++ con el listener Python del Ejercicio 01 (o viceversa) y
       funcionan igual — mismo topic, mismo tipo, dos lenguajes
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Ejercicio 01](../ejercicio-01-publisher_subscriber_py/README.md) | **Ejercicio 02** | [Ejercicio 03](../ejercicio-03-comparar_latencia/README.md) |
+
+← [Volver a la Semana 01](../../README.md)
