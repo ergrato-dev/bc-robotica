@@ -22,16 +22,19 @@ Estructura:
 starter/
 ├── package.xml
 ├── CMakeLists.txt
+├── include/ejercicio02_pubsub_cpp/
+│   ├── sensor_publisher.hpp    # PASO 1 y 2
+│   └── sensor_listener.hpp     # PASO 3
 ├── src/
-│   ├── sensor_publisher.cpp    # PASO 1 y 2
-│   └── sensor_listener.cpp     # PASO 3
+│   ├── sensor_publisher_main.cpp   # solo main(): no se toca
+│   └── sensor_listener_main.cpp    # solo main(): no se toca
 └── test/
     └── test_pubsub.cpp          # tests ya escritos (gtest), fallan hasta completar los pasos
 ```
 
 ## Paso 1: El publisher crea su canal
 
-**Abre `src/sensor_publisher.cpp`** y descomenta la línea de inicialización de
+**Abre `include/ejercicio02_pubsub_cpp/sensor_publisher.hpp`** y descomenta la línea de inicialización de
 `publisher_` en el constructor (Paso 1).
 
 **Verifica**:
@@ -53,7 +56,7 @@ Debe pasar `PublisherTest.PublisherExiste`. Los demás siguen fallando.
 
 ## Paso 3: El listener se suscribe y cuenta mensajes
 
-**Abre `src/sensor_listener.cpp`** y descomenta la línea de `subscription_` (Paso 3).
+**Abre `include/ejercicio02_pubsub_cpp/sensor_listener.hpp`** y descomenta la línea de `subscription_` (Paso 3).
 
 **Verifica**: debe pasar `ListenerTest.RecibeMensajesDelPublisher`. Con esto, los tres
 tests del starter pasan.

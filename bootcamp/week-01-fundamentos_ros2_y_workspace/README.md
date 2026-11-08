@@ -119,6 +119,6 @@ colcon test-result --verbose
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Índice de semanas](../README.md) | **Semana 01** | Semana 02 (pendiente de publicar) |
+| [Índice de semanas](../README.md) | **Semana 01** | [Semana 02](../week-02-topicos_qos_e_interfaces/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)
