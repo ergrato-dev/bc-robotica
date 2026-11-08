@@ -1,7 +1,7 @@
 """Proyecto — Semana 01 — capa Python.
 
 NOTA PARA EL APRENDIZ: adapta el topic y el contenido del mensaje a tu dominio
-asignado (almacen, mesa_clasificacion, campus, mesa_ensamblado...). Ver la
+asignado (almacen, laboratorio, planta, oficina, cultivo, biblioteca). Ver la
 tabla de adaptación en el README de este proyecto.
 """
 
@@ -12,7 +12,7 @@ from std_msgs.msg import String
 
 class SensorStub(Node):
     def __init__(self) -> None:
-        super().__init__("sensor_stub_py")
+        super().__init__("sensor_stub")
 
         # TODO: cambia "dominio/state" por el topic de tu misión
         # (ej. "almacen/state", "laboratorio/state").

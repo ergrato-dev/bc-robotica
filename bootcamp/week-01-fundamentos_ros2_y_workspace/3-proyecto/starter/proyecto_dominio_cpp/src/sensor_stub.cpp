@@ -13,7 +13,7 @@ using namespace std::chrono_literals;
 
 class SensorStub : public rclcpp::Node {
 public:
-  SensorStub() : Node("sensor_stub_cpp"), counter_{0} {
+  SensorStub() : Node("sensor_stub"), counter_{0} {
     // TODO: cambia "dominio/state" por el topic de tu misión.
     publisher_ = create_publisher<std_msgs::msg::String>("dominio/state", 10);
     timer_ = create_wall_timer(1000ms, std::bind(&SensorStub::on_timer, this));
