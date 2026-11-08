@@ -82,3 +82,13 @@ ros2 topic hz /sensor/state
 - [ ] Los tres tests de `test/test_pubsub.py` pasan
 - [ ] `ros2 topic hz /sensor/state` reporta ~2 Hz (el timer es de 0.5 s)
 - [ ] `ros2 node info /sensor_listener` muestra la subscripción a `/sensor/state`
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Prácticas](../README.md) | **Ejercicio 01** | [Ejercicio 02](../ejercicio-02-publisher_subscriber_cpp/README.md) |
+
+← [Volver a la Semana 01](../../README.md)

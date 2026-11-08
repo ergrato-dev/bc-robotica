@@ -16,6 +16,11 @@ Cuestionario de autoevaluación. Responde primero sin ver las respuestas.
    valor?
 7. ¿Qué le pasaría a tu nodo si llamas dos veces a `rclpy.init()` sin un `shutdown()`
    entre medio?
+8. Un nodo en el namespace `/robot1` crea un publisher con el nombre `"sensor/state"`.
+   ¿En qué topic publica? ¿Y si el nombre fuera `"/sensor/state"`?
+9. ¿Cómo pruebas un subscriber sin arrancar el publisher real?
+10. En C++, ¿en qué posición va el `depth` de `create_subscription` respecto al
+    callback, y en Python?
 
 <details>
 <summary>Ver respuestas</summary>
@@ -37,6 +42,13 @@ Cuestionario de autoevaluación. Responde primero sin ver las respuestas.
    preocuparte de cuándo se destruye.
 7. Lanza una excepción — el contexto de ROS2 para ese proceso ya está inicializado y no
    se puede inicializar dos veces sin cerrarlo primero.
+8. En `/robot1/sensor/state` (nombre relativo, se cuelga del namespace). Con
+   `"/sensor/state"` publicaría en `/sensor/state`, ignorando el namespace: dos robots
+   mezclarían sus datos en el mismo topic.
+9. Publicando a mano con `ros2 topic pub --once <topic> <tipo> "<yaml>"` y viendo el log
+   del subscriber.
+10. En C++ el `depth` va antes del callback (`topic, depth, callback`); en Python va
+    después (`tipo, topic, callback, depth`).
 
 </details>
 
@@ -49,6 +61,7 @@ Verificado automáticamente por `colcon test` en cada `starter/`:
 | 01 (`rclpy`) | `test_publisher_existe`, `test_publica_mensajes`, `test_listener_recibe_mensajes_del_publisher` |
 | 02 (`rclcpp`) | `PublisherTest.PublisherExiste`, `PublisherTest.PublicaMensajes`, `ListenerTest.RecibeMensajesDelPublisher` |
 | 03 | Sin test automatizado — verificación manual con `ros2 topic hz` (ver checklist del ejercicio) |
+| 04 | Sin test automatizado — cada paso tiene su ✅ de verificación por CLI (ver checklist del ejercicio) |
 
 ```bash
 colcon test --packages-select ejercicio01_pubsub_py ejercicio02_pubsub_cpp
@@ -63,8 +76,8 @@ La capa del proyecto del dominio (`3-proyecto/`):
 - [ ] `proyecto_dominio_py` y `proyecto_dominio_cpp` compilan y publican en el mismo
       topic (renombrado a la misión elegida)
 - [ ] `colcon test` pasa en ambos paquetes
-- [ ] Respuestas del Ejercicio 03 (comparación Python/C++) documentadas en el README
-      del proyecto
+- [ ] Respuestas de los Ejercicios 03 (comparación Python/C++) y 04 (grafo y
+      remapping) documentadas en el README del proyecto
 
 ### Penalizaciones (ver también `.github/copilot-instructions.md`)
 
@@ -73,5 +86,15 @@ La capa del proyecto del dominio (`3-proyecto/`):
 | No compila/lintea limpio | 0 en Producto |
 | `rclpy.init()`/`rclcpp::init()` sin su `shutdown()` correspondiente | -10 |
 | Topic sin renombrar a la misión elegida | -10 |
-| Sin las respuestas del Ejercicio 03 en el README | -10 |
+| Sin las respuestas de los Ejercicios 03 y 04 en el README | -10 |
 | Código copiado de otra misión/dominio | 0 en Producto |
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Glosario](5-glosario/README.md) | **Rúbrica** | [Índice de semanas](../README.md) |
+
+← [Volver a la Semana 01](README.md)

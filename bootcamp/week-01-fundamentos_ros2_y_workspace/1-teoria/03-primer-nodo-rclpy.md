@@ -53,7 +53,7 @@ Cuatro pasos, siempre en este orden:
 <img src="../0-assets/03-ciclo-vida-nodo.svg" alt="Ciclo de vida de un nodo ROS2: init, construir el nodo, spin procesando callbacks en bucle, destroy_node y shutdown">
 
 Vas a escribir estos cinco pasos, o su equivalente exacto en C++, en cada nodo de las
-próximas 19 semanas — vale la pena memorizarlos ahora.
+próximas 33 semanas — vale la pena memorizarlos ahora.
 
 ## 3. Cómo se escribe: publisher con timer
 
@@ -104,8 +104,69 @@ Nota los tres números en `create_publisher(String, "sensor/state", 10)`:
   si un subscriber se conecta tarde"
 
 `self.get_logger()` es el logger propio del nodo — usarlo en vez de `print()` es lo que
-hace que tus mensajes aparezcan correctamente etiquetados con el nombre del nodo en
-`ros2 topic echo`/`rqt_console` y respeten los niveles de log (`info`, `warn`, `error`).
+hace que tus mensajes aparezcan etiquetados con el nombre del nodo en la consola y en el
+topic `/rosout` (el que lee `rqt_console`), y que respeten los niveles de log (`info`,
+`warn`, `error`).
+
+### 3.2 El otro extremo: subscriber
+
+Un **subscriber** (suscriptor) es la pieza que recibe los mensajes de un topic. No
+pregunta "¿hay algo nuevo?" en un bucle: le entregas una función (el **callback**) y
+ROS2 la llama cada vez que llega un mensaje, siempre que el nodo esté dentro de
+`rclpy.spin()`.
+
+```python
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+
+class SensorListener(Node):
+    def __init__(self) -> None:
+        super().__init__("sensor_listener")
+        # Mismo tipo y mismo nombre de topic que el publisher: si cualquiera de los dos
+        # difiere, ROS2 no los conecta y el callback nunca se ejecuta (sin error).
+        self._subscription = self.create_subscription(
+            String, "sensor/state", self._on_message, 10
+        )
+
+    def _on_message(self, msg: String) -> None:
+        self.get_logger().info(f"Recibido: {msg.data}")
+
+
+def main() -> None:
+    rclpy.init()
+    node = SensorListener()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+```
+
+Los cuatro argumentos de `create_subscription`: tipo, nombre del topic, callback y
+`depth` de la cola (el mismo concepto que en el publisher).
+
+Guardar el resultado en `self._subscription` no es decorativo: si no guardas la
+referencia, Python puede destruir el objeto y la suscripción desaparece sin aviso.
+
+Para probarlo con el publisher de la sección anterior, abre dos terminales (en ambas,
+antes, `source install/setup.bash` desde la raíz del workspace):
+
+```bash
+# Terminal 1
+ros2 run ejercicio01_pubsub_py sensor_publisher
+# [INFO] [1762600000.123456789] [sensor_publisher]: Publicado: lectura #0
+
+# Terminal 2
+ros2 run ejercicio01_pubsub_py sensor_listener
+# [INFO] [1762600000.624000000] [sensor_listener]: Recibido: lectura #1
+```
+
+El listener empieza en la lectura que esté saliendo cuando arranca, no en la `#0`: un
+subscriber que llega tarde no recibe el pasado (salvo con la QoS adecuada, Semana 02).
 
 ## 4. Antipatrones
 
@@ -138,3 +199,13 @@ hace que tus mensajes aparezcan correctamente etiquetados con el nombre del nodo
 - [ ] Puedo escribir de memoria el esqueleto `init → Node → spin → destroy → shutdown`
 - [ ] Sé qué significan los tres argumentos de `create_publisher`
 - [ ] Corrí mi nodo con `ros2 run` y vi sus mensajes con `ros2 topic echo`
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [02 · Workspace y colcon](02-workspace-colcon-y-paquetes.md) | **03 · Primer nodo rclpy** | [04 · Primer nodo rclcpp](04-primer-nodo-rclcpp.md) |
+
+← [Volver a la Semana 01](../README.md)

@@ -15,7 +15,7 @@ class SensorStub(Node):
         super().__init__("sensor_stub_py")
 
         # TODO: cambia "dominio/state" por el topic de tu misión
-        # (ej. "almacen/state", "mesa_clasificacion/state").
+        # (ej. "almacen/state", "laboratorio/state").
         self._publisher = self.create_publisher(String, "dominio/state", 10)
         self._counter = 0
         self._timer = self.create_timer(1.0, self._on_timer)
