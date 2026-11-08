@@ -39,6 +39,7 @@ Nodo `ejemplo_reading_py/reading_publisher.py`:
 
 ```python
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 
 # El módulo Python generado se llama como el paquete; el tipo, como el .msg.
@@ -70,11 +71,11 @@ def main() -> None:
     node = ReadingPublisher()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        rclpy.try_shutdown()  # Ctrl+C ya cerró el contexto
 ```
 
 ## 4. Subscriber en C++, paso a paso

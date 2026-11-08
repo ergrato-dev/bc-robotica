@@ -5,6 +5,7 @@ Requiere los Pasos 1 y 2 hechos en ejercicio03_interfaces y compilados.
 
 import rclpy
 from ejercicio03_interfaces.msg import SensorReading
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 
 # Por encima de este valor la lectura se marca como aviso (STATUS_WARN).
@@ -46,11 +47,12 @@ def main() -> None:
     node = ReadingPublisher()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":

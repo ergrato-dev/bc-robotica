@@ -1,6 +1,7 @@
 """Ejercicio 01, Semana 01 — subscriber mínimo en rclpy."""
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from std_msgs.msg import String
 
@@ -33,11 +34,12 @@ def main() -> None:
     node = SensorListener()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":

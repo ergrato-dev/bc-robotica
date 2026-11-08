@@ -1,6 +1,7 @@
 """Ejercicio 01, Semana 03 — server del servicio robot/enable (std_srvs/SetBool)."""
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from std_srvs.srv import SetBool
 
@@ -48,11 +49,12 @@ def main() -> None:
     node = EnableServer()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":

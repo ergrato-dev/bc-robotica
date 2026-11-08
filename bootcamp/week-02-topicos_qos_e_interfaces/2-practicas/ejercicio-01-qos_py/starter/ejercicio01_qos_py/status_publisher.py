@@ -1,6 +1,7 @@
 """Ejercicio 01, Semana 02 — publisher latched (TRANSIENT_LOCAL)."""
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, HistoryPolicy, QoSProfile, ReliabilityPolicy
 from std_msgs.msg import String
@@ -36,11 +37,12 @@ def main() -> None:
     node = StatusPublisher()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":
