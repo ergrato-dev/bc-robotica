@@ -1,0 +1,8 @@
+# Cambiar el modo del robot.
+# TODO: si renombraste DomainState, renombra también este servicio
+# (SetAisleMode, SetBenchMode...) y su referencia en CMakeLists.txt.
+
+uint8 mode            # uno de los MODE_* de DomainState
+---
+bool accepted         # false si el modo no existe
+string message        # motivo, legible por una persona

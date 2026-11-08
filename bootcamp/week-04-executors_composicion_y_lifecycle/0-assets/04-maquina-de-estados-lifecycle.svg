@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" role="img" aria-label="Máquina de estados de un nodo lifecycle. Unconfigured pasa a inactive con configure; inactive vuelve a unconfigured con cleanup. Inactive pasa a active con activate; active vuelve a inactive con deactivate. Shutdown lleva desde unconfigured, inactive o active a finalized. Si un callback devuelve FAILURE, el nodo se queda en el estado de partida">
+  <title>Estados de un nodo lifecycle</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker></defs>
+  <rect width="840" height="360" fill="#0d1117"/>
+  <text x="420" y="32" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">Estados primarios y transiciones</text>
+  <g font-family="Inter, Roboto, sans-serif" text-anchor="middle">
+    <rect x="40" y="90" width="190" height="70" rx="35" fill="#161b22" stroke="#8b949e" stroke-width="2"/><text x="135" y="122" font-size="15" font-weight="700" fill="#e6edf3">unconfigured</text><text x="135" y="143" font-size="11" fill="#8b949e">nada reservado aún</text>
+    <rect x="325" y="90" width="190" height="70" rx="35" fill="#161b22" stroke="#d29922" stroke-width="2"/><text x="420" y="122" font-size="15" font-weight="700" fill="#e6edf3">inactive</text><text x="420" y="143" font-size="11" fill="#8b949e">recursos listos, sin publicar</text>
+    <rect x="610" y="90" width="190" height="70" rx="35" fill="#161b22" stroke="#3fb950" stroke-width="2"/><text x="705" y="122" font-size="15" font-weight="700" fill="#e6edf3">active</text><text x="705" y="143" font-size="11" fill="#8b949e">trabajando</text>
+    <rect x="325" y="270" width="190" height="60" rx="30" fill="#161b22" stroke="#f85149" stroke-width="2"/><text x="420" y="306" font-size="15" font-weight="700" fill="#e6edf3">finalized</text>
+  </g>
+  <path d="M232 112 L322 112" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/><text x="277" y="102" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#58a6ff">configure</text>
+  <path d="M323 140 L234 140" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/><text x="277" y="160" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#58a6ff">cleanup</text>
+  <path d="M517 112 L607 112" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/><text x="562" y="102" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#58a6ff">activate</text>
+  <path d="M608 140 L519 140" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/><text x="562" y="160" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#58a6ff">deactivate</text>
+  <path d="M135 164 L135 300 L321 300" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+  <path d="M420 164 L420 266" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+  <path d="M705 164 L705 300 L519 300" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+  <text x="228" y="290" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#f85149">shutdown</text>
+  <text x="612" y="290" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#f85149">shutdown</text>
+  <text x="420" y="222" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#f85149">shutdown</text>
+  <text x="420" y="352" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">Si el callback devuelve FAILURE, el nodo se queda donde estaba</text>
+</svg>
