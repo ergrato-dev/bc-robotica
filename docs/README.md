@@ -9,7 +9,8 @@ Esta carpeta contiene documentación general que aplica a todo el bootcamp.
 | [setup/](setup/README.md) | ⚙️ Configuración del entorno (con y sin Docker) |
 | [stack-versions.md](stack-versions.md) | Versiones oficiales de ROS2, Gazebo, Nav2, MoveIt2 y dependencias |
 | [dependency-security-policy.md](dependency-security-policy.md) | 🔒 Política de seguridad, regla de oro (versiones exactas, sin `:latest`) |
-| [tracks.md](tracks.md) | 🔀 Política de tracks (A/B) y dominios/misiones — anticopia |
+| [dominios.md](dominios.md) | 🎯 Política de dominios/misiones — anticopia |
+| [decision-semanas.md](decision-semanas.md) | 📐 ADR: por qué 33 semanas × 12 h y ruta única |
 | [hardware-opcional.md](hardware-opcional.md) | 🔧 BOM de referencia para quien quiera hardware físico |
 
 ## 🐳 Entorno de Desarrollo
@@ -48,11 +49,13 @@ cd bootcamp/week-01-fundamentos_ros2_y_workspace
 | **Middleware** | ROS2 Jazzy Jalisco, Ubuntu 24.04 |
 | **Lenguajes** | Python 3.12 (`rclpy`), C++17 (`rclcpp`) — ambos de primera clase |
 | **Simulación** | Gazebo Harmonic (`gz-sim`), `ros_gz` |
+| **Control** | `ros2_control`, `ros2_controllers` |
 | **Navegación** | Nav2, `slam_toolbox`, AMCL |
 | **Manipulación** | MoveIt2, `moveit_py`, OMPL |
-| **Percepción** | OpenCV, `cv_bridge`, YOLOv8/`ultralytics` (opcional) |
+| **Percepción** | OpenCV, `cv_bridge`, PCL, YOLO/`ultralytics` |
 | **Testing** | `colcon test`, `pytest`/`launch_testing`, `gtest` |
-| **Herramientas** | Docker 27.5.1, `ruff`, `mypy`, `clang-format` |
+| **Avanzado** | `ros2_tracing`, SROS2, micro-ROS |
+| **Herramientas** | Docker 27.5.1, `uv`, `ruff`, `mypy`, `clang-format` |
 
 Ver [stack-versions.md](stack-versions.md) para versiones detalladas pinneadas.
 
@@ -63,3 +66,13 @@ Ver [stack-versions.md](stack-versions.md) para versiones detalladas pinneadas.
 - [MoveIt2 Documentation](https://moveit.picknik.ai/)
 - [Gazebo Harmonic Documentation](https://gazebosim.org/docs/harmonic)
 - [Docker Documentation](https://docs.docker.com/)
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Inicio del bootcamp](../README.md) | **Documentación** | [Setup](setup/README.md) |
+
+← [Volver al inicio del bootcamp](../README.md)

@@ -3,7 +3,8 @@
 Este documento define las versiones oficiales de todas las tecnologías usadas en el bootcamp.
 
 > ⚠️ **IMPORTANTE**: la imagen Docker se referencia siempre con **tag de fecha**, nunca
-> `:latest`. Las dependencias Python se pinean con versión exacta (`==`). Ver
+> `:latest`. Las dependencias Python se pinean con versión exacta (`==`) y se instalan
+> con `uv`, nunca con `pip`. Ver
 > [dependency-security-policy.md](dependency-security-policy.md).
 > `scripts/verificar-enlaces.sh` falla si encuentra un rango (`>=`, `~=`, `^`) o `:latest`.
 
@@ -19,6 +20,7 @@ Este documento define las versiones oficiales de todas las tecnologías usadas e
 | Python | **3.12.3** | Versión de Ubuntu 24.04, la que trae `ros-jazzy-desktop-full` |
 | CMake | **3.28.3** | Build de paquetes `ament_cmake` |
 | GCC | **13.3.0** | Compilador por defecto de Ubuntu 24.04 |
+| uv | **0.13.7** (`ghcr.io/astral-sh/uv:0.13.7`) | Instala tooling y dependencias no-ROS. Nunca `pip` |
 
 ## 🤖 Simulación y Navegación
 
@@ -29,6 +31,8 @@ Este documento define las versiones oficiales de todas las tecnologías usadas e
 | `slam_toolbox` | `ros-jazzy-slam-toolbox` (apt) | SLAM 2D |
 | `nav2_bringup` y paquetes `nav2_*` | `ros-jazzy-navigation2` (apt), rama `jazzy` | Stack de navegación autónoma |
 | `robot_localization` | `ros-jazzy-robot-localization` (apt) | Fusión sensorial EKF/UKF |
+| `ros2_control` + `ros2_controllers` | `ros-jazzy-ros2-control`, `ros-jazzy-ros2-controllers` (apt) | Control de actuadores (semana 10 en adelante) |
+| `gz_ros2_control` | `ros-jazzy-gz-ros2-control` (apt) | `ros2_control` dentro de Gazebo Harmonic |
 
 ## 🦾 Manipulación
 
@@ -37,14 +41,16 @@ Este documento define las versiones oficiales de todas las tecnologías usadas e
 | MoveIt2 | `ros-jazzy-moveit` (apt), rama `jazzy` | Framework de manipulación |
 | `moveit_py` | incluido en MoveIt2 Jazzy | API Python oficial (reemplaza `moveit_commander`) |
 | OMPL | incluido en MoveIt2 | Planners de movimiento |
+| MoveIt Task Constructor | `ros-jazzy-moveit-task-constructor-core` (apt) | Secuencias de grasping (semana 23) |
 
 ## 👁️ Percepción
 
 | Paquete | Versión | Propósito |
 |---|---|---|
 | `cv_bridge` / `image_transport` | `ros-jazzy-cv-bridge`, `ros-jazzy-image-transport` (apt) | Puente ROS↔OpenCV |
-| `opencv-python` | `4.10.0.84` | Visión clásica |
-| `ultralytics` | `8.3.40` | YOLOv8 preentrenado — extensión opcional (semana 10, 15-B) |
+| OpenCV | `python3-opencv` (apt, el que usa `cv_bridge`) | Visión clásica |
+| PCL | `ros-jazzy-pcl-ros` (apt) | Point clouds (semana 22) |
+| `ultralytics` | `8.3.40`, en `uv venv --system-site-packages` | Detección deep learning (semana 25) |
 
 ## 🛠️ Build, Test y Lint
 
@@ -57,6 +63,8 @@ Este documento define las versiones oficiales de todas las tecnologías usadas e
 | `pytest` + `launch_testing` | `ros-jazzy-launch-testing-ament-cmake` (apt) | Tests de nodos/launch Python |
 | `clang-format` | `18.1.3` | Formato C++, `.clang-format` de la raíz es la única verdad |
 | `gtest` / `ament_cmake_gtest` | `ros-dev-tools` (apt) | Tests de nodos C++ |
+| `ros2_tracing` | `ros-jazzy-ros2trace`, `ros-jazzy-tracetools-launch` (apt) | Perfilado de latencia (semana 28) |
+| SROS2 | `ros-jazzy-sros2` (apt) | Seguridad DDS (semana 29) |
 
 ## 🐳 Dockerfile Base
 
@@ -67,14 +75,19 @@ ENV DEBIAN_FRONTEND=noninteractive \
     ROS_DISTRO=jazzy
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-pip python3-colcon-common-extensions ros-dev-tools \
+    python3-colcon-common-extensions ros-dev-tools python3-opencv \
     ros-jazzy-navigation2 ros-jazzy-slam-toolbox ros-jazzy-robot-localization \
-    ros-jazzy-moveit ros-jazzy-cv-bridge ros-jazzy-image-transport \
-    ros-jazzy-ros-gz \
+    ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control \
+    ros-jazzy-moveit ros-jazzy-moveit-task-constructor-core \
+    ros-jazzy-cv-bridge ros-jazzy-image-transport ros-jazzy-pcl-ros \
+    ros-jazzy-ros-gz ros-jazzy-ros2trace ros-jazzy-tracetools-launch ros-jazzy-sros2 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir --break-system-packages \
-    ruff==0.8.6 mypy==1.13.0 opencv-python==4.10.0.84
+# Qué: uv como único instalador de Python. Para qué: tooling aislado del Python del
+# sistema (contra el que está compilado rclpy). Impacto: cero pip en la imagen.
+COPY --from=ghcr.io/astral-sh/uv:0.13.7 /uv /uvx /bin/
+ENV UV_TOOL_BIN_DIR=/usr/local/bin
+RUN uv tool install ruff==0.8.6 && uv tool install mypy==1.13.0
 
 WORKDIR /workspace
 COPY . .
@@ -112,7 +125,7 @@ services:
 - **Trimestral**: revisión de versiones y CVEs ([procedimiento](dependency-security-policy.md#-procedimiento-para-actualizar-versiones))
 - **Por release**: al saltar de tag de imagen Docker (`jazzy-desktop-full-YYYYMMDD`), re-verificar
   `scripts/verificar-simulaciones.sh` en todas las semanas antes de publicar
-- **Última actualización**: 29/09/2026
+- **Última actualización**: 08/11/2026
 
 ## ✅ Verificación de Versiones
 
@@ -128,5 +141,17 @@ docker compose exec ros2 gz sim --version
 docker compose exec ros2 apt list --installed 2>/dev/null | grep -E "navigation2|moveit"
 
 # Python
-docker compose exec ros2 python3 -c "import cv2, ultralytics; print(cv2.__version__, ultralytics.__version__)"
+docker compose exec ros2 python3 -c "import cv2, rclpy; print(cv2.__version__)"
+docker compose exec ros2 uv --version
+docker compose exec ros2 ruff --version
 ```
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Setup sin Docker](setup/sin-docker.md) | **Versiones del stack** | [Seguridad de dependencias](dependency-security-policy.md) |
+
+← [Volver al inicio del bootcamp](../README.md)

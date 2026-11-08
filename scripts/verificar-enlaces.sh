@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Verifica integridad estructural del bootcamp:
-#   1. Nombres de carpeta week-NN-slug bien formados (planas en bootcamp/ y
-#      anidadas en bootcamp/track-{a,b}/).
+#   1. Nombres de carpeta week-NN-slug bien formados (planas en bootcamp/).
 #   2. Enlaces relativos en markdown que resuelven a una ruta real.
-#   3. Sección "Navegación" en el README de cada semana.
+#   3. Tabla de navegación al pie de cada .md de bootcamp/ y docs/.
 #   4. SVG de 0-assets/ y assets/ con XML válido y enlazados desde algún .md.
 #   5. Ninguna carpeta solution/ dentro de bootcamp/.
 #   6. Dependencias Python con versión exacta (==) en pyproject.toml y requirements.txt.
 #   7. Ninguna imagen Docker referenciada con tag :latest o sin tag.
+#   8. Tuteo (sin voseo), sin pip/npm/MySQL, SVG sin degradados.
 #
 # Uso: scripts/verificar-enlaces.sh
 # Salida: lista de problemas encontrados; exit code 1 si hay al menos uno.
@@ -24,15 +24,7 @@ while IFS= read -r d; do
     echo "NOMBRE INVALIDO (week): $d"
     fail=1
   fi
-done < <(find bootcamp -mindepth 1 -maxdepth 3 -type d -iname "week-*" 2>/dev/null)
-
-while IFS= read -r d; do
-  name=$(basename "$d")
-  if ! [[ "$name" =~ ^track-[ab]$ ]]; then
-    echo "NOMBRE INVALIDO (track): $d"
-    fail=1
-  fi
-done < <(find bootcamp -mindepth 1 -maxdepth 1 -type d -iname "track-*" 2>/dev/null)
+done < <(find bootcamp -mindepth 1 -maxdepth 1 -type d -iname "week-*" 2>/dev/null)
 
 echo "== 2. Enlaces relativos en markdown =="
 # ponytail: no parsea markdown de verdad, solo strip de fences ``` y luego
@@ -58,17 +50,14 @@ while IFS= read -r f; do
 done < <(find . -iname "*.md" -not -path "./.git/*" -not -path "*/.venv/*" \
            -not -path "*/build/*" -not -path "*/install/*" -not -path "*/log/*")
 
-echo "== 3. Navegación anterior/siguiente en README de cada semana =="
-# Solo el README.md en la raíz de una carpeta week-NN-* (no los de sus subcarpetas
-# 1-teoria/, 2-practicas/, etc., que no llevan navegación propia).
-while IFS= read -r rm; do
-  parent=$(basename "$(dirname "$rm")")
-  [[ "$parent" =~ ^week-[0-9]{2}-[a-z0-9_]+$ ]] || continue
-  if ! grep -q "Navegación" "$rm"; then
-    echo "SIN NAVEGACION: $rm"
+echo "== 3. Navegación en tabla al pie de cada documento =="
+# Todo .md de bootcamp/ y docs/ (y los README raíz) cierra con la tabla de navegación.
+while IFS= read -r md; do
+  if ! grep -q "^| Anterior | Actual | Siguiente |" "$md"; then
+    echo "SIN NAVEGACION: $md"
     fail=1
   fi
-done < <(find bootcamp -mindepth 2 -maxdepth 3 -iname "README.md" 2>/dev/null)
+done < <(find bootcamp docs -iname "*.md" -not -path "*/starter/*" 2>/dev/null; echo README.md)
 
 echo "== 4. SVG huérfanos y XML válido =="
 while IFS= read -r svg; do
@@ -108,6 +97,19 @@ done < <(
   find . -iname "Dockerfile*" -not -path "./.git/*" -print0 \
     | xargs -0 grep -HnE '^FROM\s+\S+(:latest)?\s*$' 2>/dev/null \
     | grep -vE ':[0-9]{8}|@sha256:'
+)
+
+echo "== 8. Reglas de redacción y herramientas (voseo, pip, npm, MySQL, degradados) =="
+# ponytail: lista cerrada de formas de voseo frecuentes; ampliar si aparece otra.
+while IFS= read -r hit; do
+  echo "REGLA ROTA: $hit"
+  fail=1
+done < <(
+  grep -rnwiE "tenés|podés|querés|hacé|mirá|fijate|sabés|probá|usá|instalá|ejecutá|abrí|corré" \
+    --include="*.md" bootcamp docs README.md 2>/dev/null
+  grep -rnP "(?<!uv )\bpip3? install|python3-pip|\bnpm (i|install|run)\b|\bmysql\b" \
+    --include="*.md" --include="Dockerfile*" --include="*.sh" bootcamp docs README.md 2>/dev/null
+  grep -rnlE "linearGradient|radialGradient" --include="*.svg" bootcamp assets 2>/dev/null
 )
 
 if [ "$fail" -eq 0 ]; then

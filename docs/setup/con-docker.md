@@ -222,4 +222,10 @@ docker compose build --no-cache && docker compose up -d
 
 ---
 
-→ Volver a [setup/README.md](README.md)
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Setup](README.md) | **Setup con Docker** | [Setup sin Docker](sin-docker.md) |
+
+← [Volver al inicio del bootcamp](../../README.md)

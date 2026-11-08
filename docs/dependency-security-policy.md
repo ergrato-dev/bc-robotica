@@ -19,11 +19,11 @@ FROM osrf/ros:latest
 # ✅ CORRECTO — dependencias Python con versión exacta
 ruff==0.8.6
 mypy==1.13.0
-opencv-python==4.10.0.84
+ultralytics==8.3.40
 
 # ❌ PROHIBIDO
 ruff>=0.8
-opencv-python
+ultralytics
 ```
 
 Los paquetes `apt` (`ros-jazzy-*`) se resuelven por distro (Jazzy) y no llevan `==`,
@@ -74,10 +74,10 @@ docker run --rm osrf/ros:jazzy-desktop-full-NUEVA_FECHA bash -c \
   "apt list --installed 2>/dev/null | grep -E 'navigation2|moveit|gz-sim'"
 ```
 
-### 2. Auditar dependencias Python con `pip-audit`
+### 2. Auditar dependencias Python con `pip-audit` (vía `uvx`, sin instalar `pip`)
 
 ```bash
-echo "opencv-python==NUEVA_VERSION" > /tmp/check.txt
+echo "ultralytics==NUEVA_VERSION" > /tmp/check.txt
 uvx pip-audit -r /tmp/check.txt -s osv
 ```
 
@@ -100,7 +100,7 @@ scripts/verificar-enlaces.sh
 
 ```bash
 # El nuevo tag puede cambiar comportamiento de Gazebo/Nav2 — re-correr en todas las semanas
-for w in bootcamp/week-*/ bootcamp/track-*/week-*/; do
+for w in bootcamp/week-*/; do
   scripts/verificar-simulaciones.sh "$(basename "$w")"
 done
 ```
@@ -119,3 +119,13 @@ done
 ---
 
 _Documento creado: 29/09/2026_
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Versiones del stack](stack-versions.md) | **Seguridad de dependencias** | [Política de dominios](dominios.md) |
+
+← [Volver al inicio del bootcamp](../README.md)

@@ -2,32 +2,55 @@
 
 ## 📋 Contexto del Bootcamp
 
-Este es un **Bootcamp Robótica Zero to Hero**: 19 semanas sobre **ROS2 (Jazzy Jalisco)**
-desde cero absoluto en robótica hasta un robot móvil autónomo con SLAM+Nav2 (Track A) o
-un brazo manipulador con visión y pick&place (Track B). No es un curso de "instalar ROS
-y correr un ejemplo": forma a alguien capaz de diseñar, simular, depurar y entregar un
-sistema robótico completo, con percepción, navegación o manipulación, y con Python y C++
-como herramientas igual de reales.
+Este es un **Bootcamp Robótica Zero to Advanced**: 33 semanas sobre **ROS2 (Jazzy
+Jalisco)** desde cero absoluto en robótica hasta el nivel avanzado, en una **ruta única**
+que todos cursan completa: robot móvil autónomo (SLAM+Nav2), brazo manipulador con visión
+(MoveIt2), manipulación móvil y un bloque avanzado (multi-robot, tiempo real, seguridad,
+despliegue, micro-ROS). No es un curso de "instalar ROS y correr un ejemplo": forma a
+alguien capaz de diseñar, simular, depurar, extender y desplegar un sistema robótico
+completo, con Python y C++ como herramientas igual de reales.
 
 ### 📊 Datos del Bootcamp
 
-- **Duración**: 19 semanas (~4.5 meses)
-- **Dedicación semanal**: 10 horas
-- **Total de horas**: 190 horas
+- **Duración**: 33 semanas (~8 meses)
+- **Dedicación semanal**: 12 horas
+- **Total de horas**: 396 horas
+- **Por qué 33 semanas**: el número lo fija la completitud y pertinencia del temario, no
+  la extensión de otros bootcamps. Ver [`docs/decision-semanas.md`](../docs/decision-semanas.md)
 - **Modalidad**: autoestudio asincrónico con verificación automática (`colcon test` +
   simulación headless en Gazebo)
 - **Nivel de entrada**: cero absoluto en robótica, **con programación previa en Python
-  y/o C++** (no se enseña sintaxis básica de ningún lenguaje)
-- **Nivel de salida**: capaz de diseñar, simular y depurar un sistema ROS2 completo —
-  Track A (navegación autónoma) o Track B (manipulación con visión)
+  y/o C++** (no se enseña sintaxis básica de ningún lenguaje; para eso están `bc-python`
+  y `bc-cpp`)
+- **Nivel de salida**: avanzado — capaz de diseñar, simular, depurar, extender (plugins)
+  y desplegar un sistema ROS2 completo de navegación, manipulación y manipulación móvil
 - **Lenguajes objetivo**: **Python (`rclpy`) y C++ (`rclcpp`), ambos de primera clase**.
   Ver [Política Python/C++](#-política-pythonc)
-- **Toolchain**: ROS2 Jazzy, Ubuntu 24.04, Gazebo Harmonic, Nav2, MoveIt2, `colcon`,
-  Docker
-- **Sistema operativo**: Docker (`osrf/ros:jazzy-desktop-full`) como entorno obligatorio.
-  Ver `docs/setup/`
-- **Idioma del código**: inglés (identificadores, nombres de paquetes/topics). La prosa
-  es española
+- **Toolchain**: ROS2 Jazzy, Ubuntu 24.04, Gazebo Harmonic, `ros2_control`, Nav2,
+  MoveIt2, `colcon`, `uv`, Docker
+- **Sistema operativo**: Docker (`osrf/ros:jazzy-desktop-full`, base Ubuntu 24.04) como
+  entorno obligatorio. Ver `docs/setup/`
+- **Idioma**: nomenclatura técnica en inglés (identificadores, paquetes, topics, API);
+  documentación y comentarios educativos en español
+
+### 📏 Reglas de redacción y herramientas (no negociables)
+
+- **Siempre tuteo, nunca voseo**: "tienes", "puedes", "haz", "mira"; nunca "tenés",
+  "podés", "hacé", "mirá"
+- **Nunca `pip`, siempre `uv`**. Política exacta en [Python y `uv`](#python-y-uv)
+- **Nunca `npm`, siempre `pnpm`** (si alguna herramienta web lo requiere, p. ej. un
+  dashboard de telemetría)
+- **Nunca MySQL, siempre PostgreSQL** (si se persiste telemetría o resultados de misión)
+- **Docker siempre que se requiera**, sobre Ubuntu 24.04
+- **Ejemplos claros, detallados y paso a paso; nunca asumir**. Los ejercicios no dan
+  nada por sabido: cada comando se muestra completo con su salida esperada, cada archivo
+  con su ruta, cada término se define la primera vez
+- **Comentarios que documentan qué, para qué e impacto** donde hacen falta (decisiones no
+  obvias, parámetros con efecto físico, QoS, límites). Nunca un comentario que repite el
+  código ni uno repetido en varios archivos
+- **Navegación al pie de todo documento** en tabla `Anterior | Actual | Siguiente`
+  (formato en [README.md de Semana](#readmemd-de-semana))
+- **Commit + push al terminar cada semana**, una vez pasada la verificación
 
 ---
 
@@ -46,10 +69,15 @@ Al finalizar el bootcamp, los estudiantes serán capaces de:
   learning)
 - ✅ Fusionar sensores con un EKF (`robot_localization`) y justificar cuándo un nodo
   necesita C++ por latencia
-- ✅ (Track A) Cartografiar con `slam_toolbox`, localizar con AMCL y navegar de forma
-  autónoma con Nav2, incluida la escritura de un plugin de costmap/controller en C++
-- ✅ (Track B) Planificar y ejecutar movimientos con MoveIt2, detectar objetos y ejecutar
-  un pipeline de pick&place completo, incluido un planning adapter en C++
+- ✅ Controlar actuadores simulados con `ros2_control` (hardware interface y controllers)
+- ✅ Cartografiar con `slam_toolbox`, localizar con AMCL y navegar de forma autónoma con
+  Nav2, incluida la escritura de plugins de costmap layer y controller en C++
+- ✅ Calcular cinemática directa e inversa de un brazo serie, planificar con MoveIt2 y
+  ejecutar un pipeline de pick&place con percepción 3D, incluido un planning adapter en C++
+- ✅ Integrar navegación y manipulación en un manipulador móvil
+- ✅ Operar varios robots en el mismo grafo, medir y mejorar latencia con `ros2_tracing`,
+  asegurar el grafo con SROS2, desplegar con Docker multi-stage y CI, y conectar un
+  microcontrolador con micro-ROS
 - ✅ Escribir el nodo correcto en el lenguaje correcto: Python para prototipar y
   orquestar, C++ donde el framework lo exige o hay presupuesto de latencia real
 - ✅ Documentar y demostrar un sistema robótico con evidencia reproducible (`ros2 bag`,
@@ -61,67 +89,86 @@ Al finalizar el bootcamp, los estudiantes serán capaces de:
 
 ### Distribución por Fases
 
-#### **Fase 1 · Fundamentos ROS2 bilingüe (Semanas 1-5)** — 50 horas
+#### **Fase 1 · Fundamentos ROS2 bilingüe (Semanas 1-6)** — 72 horas
 
 - Grafo ROS2/DDS, workspace `colcon`, primer nodo
 - Topics, QoS, interfaces custom
 - Servicios, acciones, parámetros
-- Executors, composición, testing y lint dual
-- Launch files, TF2, URDF básico
+- Executors, composición, lifecycle
+- Testing y lint dual, `rosbag2`, depuración
+- Launch files, TF2, URDF/xacro
 
-#### **Fase 2 · Simulación y percepción (Semanas 6-10)** — 50 horas
+#### **Fase 2 · Matemáticas, simulación y control (Semanas 7-12)** — 72 horas
 
+- Transformaciones y cuaterniones
 - Gazebo Harmonic, `ros_gz`, spawn y teleop
 - Sensores simulados (LiDAR, cámara, IMU), RViz2
+- `ros2_control`
 - Visión clásica con OpenCV
 - Odometría y fusión sensorial (EKF)
-- Detección avanzada (deep learning opcional)
 
-#### **Fase 3 · Puente común: cinemática (Semanas 11-12)** — 20 horas
+#### **Fase 3 · Robot móvil autónomo (Semanas 13-18)** — 72 horas
 
-- Cinemática de robot diferencial y de brazo serie
-- Checkpoint de integración y elección definitiva de track + dominio
+- Cinemática diferencial y control (PID, pure pursuit)
+- SLAM, AMCL, costmaps, planners/controllers, behavior trees
+- Misión autónoma y checkpoint
 
-#### **Fase 4 · Especialización — Track A o B (Semanas 13-17)** — 50 horas
+#### **Fase 4 · Manipulación (Semanas 19-24)** — 72 horas
 
-- **Track A** (SLAM + Nav2): cartografiado, AMCL, planners/controllers, behavior trees,
-  misión autónoma
-- **Track B** (MoveIt2 + visión): planning scene, OMPL, percepción para manipulación,
-  grasping, pipeline pick&place
+- Cinemática de brazo serie
+- MoveIt2, OMPL, colisiones
+- Percepción 3D, grasping, pick&place y checkpoint
 
-#### **Fase 5 · Capstone (Semanas 18-19)** — 20 horas
+#### **Fase 5 · Avanzado (Semanas 25-30)** — 72 horas
 
-- Integración final del sistema del dominio
-- Documentación, demo, hardware opcional
+- Detección con deep learning
+- Manipulación móvil
+- Multi-robot
+- Rendimiento y tiempo real
+- Seguridad (SROS2), despliegue y CI
+- micro-ROS
+
+#### **Fase 6 · Capstone (Semanas 31-33)** — 36 horas
+
+- Arquitectura, implementación y entrega del sistema del dominio
 
 ### Contenido Semana a Semana
 
-| Semana | Carpeta | Tema | Ej.1 (rclpy) | Ej.2 CORE (rclcpp) |
+| Semana | Carpeta | Tema | Ej.1 (rclpy) | Ej.2 (rclcpp) |
 | --- | --- | --- | --- | --- |
 | 01 | `bootcamp/week-01-fundamentos_ros2_y_workspace` | Grafo ROS2/DDS, `colcon`, `ament_python` vs `ament_cmake` | publisher/subscriber | mismo nodo; comparar latencia (`ros2 topic hz`) |
 | 02 | `bootcamp/week-02-topicos_qos_e_interfaces` | QoS profiles, `.msg` custom (`rosidl`) | pub/sub con QoS | mismo nodo; interfaz compartida agnóstica de lenguaje |
-| 03 | `bootcamp/week-03-servicios_acciones_y_parametros` | Servicios, acciones, parámetros | server + cliente | mismo servicio; cliente obligatorio en el lenguaje contrario al server |
-| 04 | `bootcamp/week-04-executors_composicion_y_calidad` | Executors, component containers, lifecycle, testing/lint dual | acción `long_task` | acción `run_diagnostic` — CORE, justificación de executor |
-| 05 | `bootcamp/week-05-launch_tf2_urdf_cierre_fase1` | Launch files, TF2, URDF/xacro básico | TF broadcaster | TF listener; checklist de paridad que cierra la fase |
-| 06 | `bootcamp/week-06-gazebo_harmonic_y_spawn` | `gz-sim`, `ros_gz_bridge`, spawn, teleop | scripts de teleop | nodo puente de comandos (primer hot-path de control) |
-| 07 | `bootcamp/week-07-sensores_simulados_lidar_camara_imu` | `sensor_msgs`, plugins de sensor, RViz2 | — | — |
-| 08 | `bootcamp/week-08-vision_clasica_opencv` | `cv_bridge`, filtros, color/forma, ArUco | detección clásica | — (nota: `cv_bridge` existe igual en C++) |
-| 09 | `bootcamp/week-09-odometria_fusion_sensorial_ekf` | `robot_localization` EKF | — | nodo de fusión CORE, frecuencia fija justificada |
-| 10 | `bootcamp/week-10-deteccion_avanzada_deep_learning` | YOLOv8 (`ultralytics`) vs clásico, benchmarking | inferencia + comparación | — (semana "opcional avanzada" en esfuerzo) |
-| 11 | `bootcamp/week-11-cinematica_moviles_y_brazos` | Cinemática diferencial y de brazo serie | prototipo NumPy | mismo cálculo como servicio ROS2 de baja latencia |
-| 12 | `bootcamp/week-12-checkpoint_integracion_y_eleccion_track` | Integración, elección de track y dominio | — | — |
-| 13 A | `bootcamp/track-a/week-13-slam_toolbox_y_cartografiado` | SLAM online/offline, guardar/cargar mapa | orquestar `slam_toolbox` | — |
-| 14 A | `bootcamp/track-a/week-14-amcl_localizacion_y_costmaps` | AMCL, costmaps | localizar desde pose desconocida | plugin de costmap layer (`nav2_costmap_2d::Layer`) |
-| 15 A | `bootcamp/track-a/week-15-planners_controllers_nav2` | NavFn/Smac, DWB/RPP, `nav2_simple_commander` | enviar goals, reintentos | plugin de controller (`nav2_core::Controller`) |
-| 16 A | `bootcamp/track-a/week-16-behavior_trees_y_recovery` | BT XML, recovery, waypoints | BT con `py_trees_ros` | nodo BT nativo (BT.CPP) |
-| 17 A | `bootcamp/track-a/week-17-mision_autonoma_integracion_y_rendimiento` | Misión multi-objetivo, fallos | orquestación de misión | benchmarking `rclpy` vs `rclcpp` + informe |
-| 13 B | `bootcamp/track-b/week-13-moveit2_fundamentos_y_planning_scene` | Arquitectura MoveIt2, Setup Assistant | `moveit_py` | `MoveGroupInterface` en C++ |
-| 14 B | `bootcamp/track-b/week-14-planificacion_ompl_y_colisiones` | Planners OMPL, collision objects | definir escena | plugin `planning_request_adapter` |
-| 15 B | `bootcamp/track-b/week-15-percepcion_para_manipulacion` | Eye-in-hand, pose 3D, hand-eye | — | nodo C++ detección→pose (latencia real) |
-| 16 B | `bootcamp/track-b/week-16-grasping_y_control_gripper` | `GripperCommand`, grasp planning | secuencia orquestada | controller de gripper con feedback, C++ |
-| 17 B | `bootcamp/track-b/week-17-pick_and_place_integracion_y_rendimiento` | Pipeline completo, fallos | orquestación `moveit_py` | benchmarking `rclpy` vs `rclcpp` + informe |
-| 18 | `week-18-proyecto_final_implementacion` (por track) | Sistema completo del dominio | — | al menos un nodo C++ justificado |
-| 19 | `week-19-proyecto_final_entrega_y_demo` (por track) | Pulido, documentación, demo | — | — |
+| 03 | `bootcamp/week-03-servicios_acciones_y_parametros` | Servicios, acciones, parámetros | server + cliente | mismo servicio; cliente en el lenguaje contrario al server |
+| 04 | `bootcamp/week-04-executors_composicion_y_lifecycle` | Executors, callback groups, component containers, lifecycle nodes | nodo lifecycle | componente cargado en container; justificación de executor |
+| 05 | `bootcamp/week-05-testing_lint_rosbag2_y_depuracion` | `pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor` | tests + grabación con `rosbag2` | tests gtest + reproducción de bag |
+| 06 | `bootcamp/week-06-launch_tf2_y_urdf` | Launch files, TF2, URDF/xacro | TF broadcaster | TF listener; checklist de paridad que cierra la fase |
+| 07 | `bootcamp/week-07-transformaciones_y_cuaterniones` | Matrices homogéneas, ángulos de Euler, cuaterniones, `tf_transformations` | calculadora de transformaciones NumPy | — (se reutiliza en C++ vía `tf2` en la 06) |
+| 08 | `bootcamp/week-08-gazebo_harmonic_y_teleop` | `gz-sim`, SDF, `ros_gz_bridge`, spawn, teleop | scripts de teleop | nodo puente de comandos con clamp |
+| 09 | `bootcamp/week-09-sensores_simulados_y_rviz2` | `sensor_msgs` (LiDAR, cámara, IMU), plugins de sensor, RViz2 | procesado de `LaserScan` | — |
+| 10 | `bootcamp/week-10-ros2_control` | `ros2_control`, hardware interface, `diff_drive_controller`, `joint_trajectory_controller` | cliente de controller_manager | hardware interface propio (`pluginlib`) — CORE |
+| 11 | `bootcamp/week-11-vision_clasica_opencv` | `cv_bridge`, filtros, color/forma, calibración de cámara, ArUco | detección clásica | — |
+| 12 | `bootcamp/week-12-odometria_y_fusion_ekf` | Odometría, ruido, `robot_localization` EKF | configuración EKF | nodo de odometría a frecuencia fija — CORE |
+| 13 | `bootcamp/week-13-cinematica_diferencial_y_control` | Cinemática diferencial, PID, pure pursuit | prototipo NumPy | controlador a frecuencia fija — CORE |
+| 14 | `bootcamp/week-14-slam_toolbox_y_cartografiado` | SLAM online/offline, guardar/cargar mapa | orquestar `slam_toolbox` | — |
+| 15 | `bootcamp/week-15-amcl_y_costmaps` | AMCL, costmaps 2D, capas | localizar desde pose desconocida | plugin de costmap layer (`nav2_costmap_2d::Layer`) |
+| 16 | `bootcamp/week-16-planners_y_controllers_nav2` | NavFn/Smac, DWB/RPP/MPPI, `nav2_simple_commander` | enviar goals, reintentos | plugin de controller (`nav2_core::Controller`) |
+| 17 | `bootcamp/week-17-behavior_trees_y_recovery` | BT XML, BT.CPP, recovery, waypoints | BT con `nav2_simple_commander` | nodo BT nativo (BT.CPP) |
+| 18 | `bootcamp/week-18-mision_autonoma_y_checkpoint_movil` | Misión multi-objetivo, manejo de fallos, checkpoint móvil | orquestación de misión | benchmarking `rclpy` vs `rclcpp` + informe |
+| 19 | `bootcamp/week-19-cinematica_de_brazos` | Brazo serie, DH, FK, IK numérica, Jacobiano | FK/IK en NumPy | IK como servicio de baja latencia |
+| 20 | `bootcamp/week-20-moveit2_fundamentos` | Arquitectura MoveIt2, Setup Assistant, planning scene | `moveit_py` | `MoveGroupInterface` en C++ |
+| 21 | `bootcamp/week-21-ompl_colisiones_y_adapters` | Planners OMPL, collision objects, restricciones | definir escena | plugin `planning_request_adapter` |
+| 22 | `bootcamp/week-22-percepcion_3d_y_hand_eye` | Point clouds, PCL, segmentación, calibración hand-eye | segmentación de objetos | nodo C++ detección→pose (latencia real) |
+| 23 | `bootcamp/week-23-grasping_y_gripper` | `GripperCommand`, grasp planning, MoveIt Task Constructor | secuencia orquestada | controller de gripper con feedback |
+| 24 | `bootcamp/week-24-pick_and_place_y_checkpoint` | Pipeline pick&place completo, fallos, checkpoint manipulación | orquestación `moveit_py` | benchmarking + informe |
+| 25 | `bootcamp/week-25-deteccion_deep_learning` | YOLO (`ultralytics`) vs clásico, benchmarking | inferencia + comparación | — |
+| 26 | `bootcamp/week-26-manipulacion_movil` | Nav2 + MoveIt2 en un mismo robot, coordinación base-brazo | orquestador de misión | — |
+| 27 | `bootcamp/week-27-multi_robot` | Namespaces, `ROS_DOMAIN_ID`, TF multi-robot, flotas | lanzar N robots | — |
+| 28 | `bootcamp/week-28-rendimiento_y_tiempo_real` | `ros2_tracing`, intra-process, zero-copy (loaned messages), kernel RT | perfilado | nodo optimizado y medido — CORE |
+| 29 | `bootcamp/week-29-sros2_despliegue_y_ci` | SROS2, Docker multi-stage, CI con GitHub Actions | pipeline CI | imagen de despliegue |
+| 30 | `bootcamp/week-30-micro_ros` | micro-ROS, agente, plataforma host (hardware opcional) | agente + monitor | cliente micro-ROS (C) |
+| 31 | `bootcamp/week-31-capstone_arquitectura` | Diseño del sistema del dominio, ADR, interfaces | — | — |
+| 32 | `bootcamp/week-32-capstone_implementacion` | Sistema completo del dominio | — | al menos un nodo C++ justificado |
+| 33 | `bootcamp/week-33-capstone_entrega_y_demo` | Pulido, documentación, demo, hardware opcional | — | — |
 
 ---
 
@@ -129,18 +176,19 @@ Al finalizar el bootcamp, los estudiantes serán capaces de:
 
 No es una alternancia arbitraria. Tres reglas fijas:
 
-1. **Semanas 01-05**: todo concepto de comunicación se enseña **dos veces**, en `rclpy`
+1. **Semanas 01-06**: todo concepto de comunicación se enseña **dos veces**, en `rclpy`
    y en `rclcpp`, replicando el propio patrón de los tutoriales oficiales de ROS2.
    Ningún lenguaje es "el principal" en esta fase.
-2. **Semanas 06-12**: Python por defecto (prototipado, scripting, ecosistema Python-first
-   como OpenCV/`ultralytics`), salvo que el nodo esté en un bucle de control a
-   frecuencia fija (odometría/EKF semana 09, cinemática como servicio semana 11) — ahí
-   C++ se justifica por rendimiento, nunca por dogma.
-3. **Semanas 13-17 (ambos tracks)**: Python para orquestación de alto nivel
-   (`nav2_simple_commander`, `moveit_py` — las APIs oficiales para eso). **C++
-   obligatorio** donde el propio framework lo exige (plugins vía `pluginlib`, que no
-   tiene binding Python) o donde hay presupuesto de latencia real (percepción→acción en
-   Track B). El capstone exige al menos un nodo C++ con justificación escrita.
+2. **Semanas 07-13**: Python por defecto (prototipado, scripting, ecosistema Python-first
+   como OpenCV/NumPy), salvo donde el framework solo expone el punto de extensión en C++
+   (hardware interface de `ros2_control`, semana 10) o el nodo está en un bucle a
+   frecuencia fija (odometría semana 12, controlador semana 13): ahí C++ se justifica por
+   escrito, nunca por dogma.
+3. **Semanas 14-30**: Python para orquestación de alto nivel (`nav2_simple_commander`,
+   `moveit_py` — las APIs oficiales para eso). **C++ obligatorio** donde el framework lo
+   exige (plugins vía `pluginlib`, que no tiene binding Python) o donde hay presupuesto de
+   latencia real (percepción→acción, semana 22; tiempo real, semana 28). El capstone
+   exige al menos un nodo C++ con justificación escrita.
 
 **Regla dura**: ningún plugin `pluginlib` se escribe en Python — no está soportado por
 el framework, no es una elección pedagógica.
@@ -149,15 +197,14 @@ el framework, no es una elección pedagógica.
 
 ## 🗂️ Estructura de Carpetas
 
-Semanas 01-12, planas en `bootcamp/`. Semanas 13-19, anidadas por track:
+Todas las semanas, planas en `bootcamp/` (ruta única, sin tracks):
 
 ```
 bootcamp/
-├── week-01-fundamentos_ros2_y_workspace/   … week-12-checkpoint_integracion_y_eleccion_track/
-├── track-a/
-│   └── week-13-slam_toolbox_y_cartografiado/  … week-19-proyecto_final_entrega_y_demo/
-└── track-b/
-    └── week-13-moveit2_fundamentos_y_planning_scene/  … week-19-proyecto_final_entrega_y_demo/
+├── README.md                               # índice de semanas con su estado
+├── week-01-fundamentos_ros2_y_workspace/
+├── …
+└── week-33-capstone_entrega_y_demo/
 ```
 
 Cada semana sigue esta estructura estándar:
@@ -172,7 +219,7 @@ week-XX-tema_principal/
 │   └── ejercicio-NN-tema/
 │       ├── README.md
 │       └── starter/          # paquete(s) ROS2: rclpy y/o rclcpp según la semana
-├── 3-proyecto/                # Capa semanal del proyecto del track/dominio
+├── 3-proyecto/                # Capa semanal del proyecto del dominio
 │   ├── README.md              # Requisitos del entregable
 │   └── starter/                # Paquete con TODOs adaptable al dominio
 ├── 4-recursos/                # Recursos adicionales
@@ -186,8 +233,8 @@ week-XX-tema_principal/
 ### 📁 Carpetas Raíz
 
 - **`assets/`**: recursos visuales globales (header del README)
-- **`docs/`**: documentación transversal (setup, `stack-versions.md`, `tracks.md`,
-  `hardware-opcional.md`, `dependency-security-policy.md`)
+- **`docs/`**: documentación transversal (setup, `stack-versions.md`, `dominios.md`,
+  `decision-semanas.md`, `hardware-opcional.md`, `dependency-security-policy.md`)
 - **`scripts/`**: `verificar-enlaces.sh`, `verificar-simulaciones.sh`
 - **`bootcamp/`**: contenido semanal
 
@@ -210,6 +257,8 @@ week-XX-tema_principal/
 - **Todo fragmento de código es ejecutable** contra el stack pinneado en
   `docs/stack-versions.md`. Si es un ejemplo de lo que NO hacer, se marca con `// ❌`
   / `# ❌` y se explica qué falla
+- Ejemplos **paso a paso**: cada comando completo con su salida esperada, cada archivo
+  con su ruta desde la raíz del workspace. Nunca "configura X" sin mostrar cómo
 - Diagramas SVG cuando aporten (nunca ASCII art, nunca capturas de pantalla)
 - Referencias a la documentación oficial (docs.ros.org, navigation.ros.org,
   moveit.picknik.ai, gazebosim.org) como fuente de verdad
@@ -242,8 +291,7 @@ Reglas:
 
 ### 3. **Proyecto** (`3-proyecto/`)
 
-Cada semana añade **una capa nueva al mismo sistema del track y dominio del
-estudiante**. Nunca un proyecto desechable por semana.
+Cada semana añade **una capa nueva al mismo sistema del dominio del estudiante**. Nunca un proyecto desechable por semana.
 
 El README del proyecto incluye:
 
@@ -254,10 +302,11 @@ El README del proyecto incluye:
    `scripts/verificar-simulaciones.sh week-NN`
 4. Criterios de calidad más allá de lo automatizable
 5. Adaptación al dominio con ejemplos para al menos las misiones del catálogo de
-   `docs/tracks.md`
+   `docs/dominios.md`
 
-**Política de tracks + dominio**: el estudiante declara su dominio/misión en la Semana
-01 y su track (A/B) en la Semana 12; ninguno cambia después. Ver `docs/tracks.md`.
+**Política de dominio**: el estudiante declara su dominio/misión en la Semana 01 y no
+cambia después; cada misión tiene una parte móvil y una de manipulación, así que sirve
+para las 33 semanas. Ver `docs/dominios.md`.
 
 ### 4. **Recursos** (`4-recursos/`)
 
@@ -282,7 +331,8 @@ Conecta la prosa española con la documentación oficial en inglés.
 
 ### Python (`rclpy`)
 
-- Python 3.12.3, `ament_python`, `package.xml` + `setup.py`
+- Python 3.12.3 (el del sistema en Ubuntu 24.04, que es contra el que está compilado
+  `rclpy`), `ament_python`, `package.xml` + `setup.py`
 - Lint/format: `ruff` (reemplaza flake8+black+isort); tipado: `mypy` en modo estricto
   sobre el código propio (no sobre `rclpy`, que carece de stubs completos)
 - Nomenclatura: `snake_case` para funciones/variables/archivos/paquetes; `PascalCase`
@@ -292,6 +342,20 @@ Conecta la prosa española con la documentación oficial en inglés.
 - ✅ Type hints en toda función pública
 - ❌ `except Exception:` desnudo — capturar la excepción concreta o dejar que se
   propague con contexto
+
+### Python y `uv`
+
+**Nunca `pip`**, ni en el material ni en el Dockerfile. `rclpy` y los paquetes ROS no
+viven en PyPI, así que el reparto es:
+
+| Qué | Cómo se instala | Por qué |
+| --- | --- | --- |
+| Paquetes ROS (`rclpy`, `cv_bridge`, `tf_transformations`...) | `apt` / `rosdep` | Están compilados contra el Python del sistema y ROS Jazzy |
+| Tooling (`ruff`, `mypy`) | `uv tool install ruff mypy` | Aislado del sistema, versión pinneada |
+| Dependencias no-ROS (`ultralytics`, versiones nuevas de `numpy`...) | `uv venv --system-site-packages` + `uv pip install` dentro del venv | Ve `rclpy` del sistema sin contaminarlo |
+| Scripts sueltos | `uv run --with <paquete> script.py` | Sin instalar nada globalmente |
+
+`colcon` sigue construyendo los paquetes `ament_python`; `uv` no sustituye a `colcon`.
 
 ### C++ (`rclcpp`)
 
@@ -321,7 +385,7 @@ Conecta la prosa española con la documentación oficial en inglés.
 
 ### Placeholders
 
-- `<tu-track>` / `<tu-dominio>` para el track y la misión del estudiante
+- `<tu-dominio>` para la misión del estudiante
 - `<ruta-al-repo>` para rutas locales
 - ❌ Nunca una ruta absoluta real de una máquina concreta en el material
 
@@ -368,7 +432,7 @@ hardware opcional #f0883e
 ```
 
 - `acento python`/`acento c++` se reservan para diagramas que comparan ambos lenguajes
-  lado a lado (semanas 01-05, 13-17). `simulación` para todo lo que ocurre solo en
+  lado a lado (semanas 01-06 y donde haya ejercicio CORE en C++). `simulación` para todo lo que ocurre solo en
   Gazebo. `hardware opcional` exclusivamente en diagramas de la sección de hardware
 - ✅ Tipografía sans-serif: `Inter, Roboto, "Segoe UI", system-ui, sans-serif`;
   `ui-monospace, "JetBrains Mono", Consolas, monospace` para código en el diagrama
@@ -395,13 +459,27 @@ Debe incluir, en este orden:
 3. `## 📋 Prerrequisitos`
 4. `## 🗂️ Estructura de la Semana` (árbol de archivos)
 5. `## 📝 Contenidos` (tablas de teoría, prácticas y proyecto con duración y lenguaje)
-6. `## ⏱️ Distribución del Tiempo (10 horas)`
+6. `## ⏱️ Distribución del Tiempo (12 horas)` — la tabla suma exactamente 12 h; si suma
+   más, se recorta alcance
 7. `## 🎩 Trucos y atajos` (CLI de ROS2, `rqt`, RViz2, editor; mínimo cinco)
 8. `## 📌 Entregables`
 9. `## ✅ Verificación` (comandos `colcon`/simulación headless)
 10. `## 🔧 Extensión Hardware (opcional)` — solo si aplica esa semana, siempre al final
     y en bloque `> [!NOTE]`, nunca mezclada con los pasos de simulación
-11. `## 🔗 Navegación` (anterior / actual / siguiente)
+11. `## 🔗 Navegación`, en tabla al pie, igual en todo documento del repo:
+
+```markdown
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Semana 01](../week-01-…/README.md) | **Semana 02** | [Semana 03](../week-03-…/README.md) |
+
+← [Volver al inicio del bootcamp](../../README.md)
+```
+
+Dentro de una semana, teoría, prácticas, recursos y glosario encadenan su propio
+anterior/siguiente (p. ej. teoría 01 → teoría 02).
 
 ### Archivos de Teoría
 
@@ -436,7 +514,7 @@ Cada semana incluye **tres tipos de evidencias**:
 1. **Conocimiento 🧠** (30%): cuestionario de autoevaluación con respuestas al final
 2. **Desempeño 💪** (40%): ejercicios verificados por `colcon test` (y simulación
    headless cuando aplica) en cada starter
-3. **Producto 📦** (30%): la capa semanal del proyecto del track/dominio
+3. **Producto 📦** (30%): la capa semanal del proyecto del dominio
 
 Mínimo **70%** en cada tipo. Al ser autoestudio, el cuestionario incluye sus respuestas
 en una sección colapsable (`<details>`) al final de la rúbrica.
@@ -449,7 +527,7 @@ Penalizaciones estándar del Producto:
 | Simulación no levanta headless | 0 en Producto |
 | Plugin `pluginlib` escrito en Python | 0 en Producto |
 | Nodo de actuador sin clamp de límites | -20 |
-| Sin nodo C++ CORE donde la semana lo exige (13-17) sin justificación | -15 |
+| Sin nodo C++ CORE donde la semana lo exige sin justificación | -15 |
 | Sin tests propios del proyecto | -15 |
 | Código copiado de otra misión/dominio | 0 en Producto |
 
@@ -475,10 +553,9 @@ interfaces) se evalúa con criterios observables escritos en la rúbrica.
 4. **Verificable**: todo entregable compila/lintea y tiene tests o se verifica en
    simulación. Si no se puede verificar, replantear el entregable
 5. **Progresión estricta**: ningún concepto se usa antes de su semana. Sin acciones
-   antes de la 03, sin TF2/URDF antes de la 05, sin Gazebo antes de la 06, sin fusión
-   sensorial antes de la 09, sin cinemática antes de la 11, sin SLAM/Nav2 ni MoveIt2
-   antes de la 13, sin plugins `pluginlib` antes de su semana específica (14 en ambos
-   tracks)
+   antes de la 03, sin TF2/URDF antes de la 06, sin Gazebo antes de la 08, sin
+   `pluginlib` ni `ros2_control` antes de la 10, sin fusión sensorial antes de la 12, sin
+   SLAM/Nav2 antes de la 14, sin MoveIt2 antes de la 20
 6. **Verificar antes de publicar**: `./scripts/verificar-simulaciones.sh week-NN` y
    `colcon build && colcon test` tienen que pasar
 7. **No inventar topics, servicios, parámetros ni plugins.** Si hay duda, decirlo y
@@ -493,7 +570,7 @@ interfaces) se evalúa con criterios observables escritos en la rúbrica.
 - **Nav2/MoveIt2** se usan en su rama `jazzy`; las versiones exactas de cada paquete
   viven en `docs/stack-versions.md`
 - **`moveit_py`** es la API Python oficial de MoveIt2 desde Iron/Jazzy — se usa en el
-  Track B en vez de `moveit_commander` (deprecado)
+  bootcamp en vez de `moveit_commander` (deprecado)
 
 ---
 
@@ -519,20 +596,18 @@ interfaces) se evalúa con criterios observables escritos en la rúbrica.
 
 ## ✅ Checklist para Nuevas Semanas
 
-- [ ] Estructura de carpetas completa (en `bootcamp/` o en `bootcamp/track-{a,b}/`
-      según corresponda)
+- [ ] Estructura de carpetas completa en `bootcamp/week-NN-slug/`
 - [ ] `README.md` con las secciones obligatorias (incluida `🎩 Trucos y atajos`)
 - [ ] Teoría en `1-teoria/`, un archivo por concepto (~250 líneas cada uno)
 - [ ] Cada término técnico nuevo definido en su primera aparición
-- [ ] Semanas 01-05: los dos ejercicios (`rclpy`/`rclcpp`) implementan el mismo
+- [ ] Semanas 01-06: los dos ejercicios (`rclpy`/`rclcpp`) implementan el mismo
       concepto y son comparables
-- [ ] Semanas 13-17: el ejercicio CORE en C++ existe, compila y su justificación de
+- [ ] Donde la tabla marca CORE: el ejercicio en C++ existe, compila y su justificación de
       "por qué C++ aquí" está escrita en el README
 - [ ] Prácticas con patrón descomentar, tests escritos en el starter, sin `solution/`
 - [ ] `./scripts/verificar-simulaciones.sh week-NN` pasa si la semana tiene simulación
 - [ ] `colcon build && colcon test` pasa (Python y C++)
-- [ ] Proyecto que añade una capa al sistema del track/dominio, con adaptación por
-      misión
+- [ ] Proyecto que añade una capa al sistema del dominio, con adaptación por misión
 - [ ] Ningún concepto usado antes de la semana en que se enseña
 - [ ] Sección de hardware opcional (si aplica) en bloque `> [!NOTE]` al final, nunca
       bloqueante
@@ -540,8 +615,12 @@ interfaces) se evalúa con criterios observables escritos en la rúbrica.
 - [ ] Glosario A-Z con el término/API en inglés entre paréntesis
 - [ ] `rubrica-evaluacion.md` con cuestionario + respuestas en `<details>`
 - [ ] SVG con la paleta del bootcamp, todos enlazados
-- [ ] Navegación anterior/siguiente correcta
+- [ ] Tuteo en todo el texto, sin voseo; cero `pip`/`npm`/MySQL
+- [ ] Tabla de tiempos suma 12 h
+- [ ] Navegación en tabla al pie de cada documento, enlaces correctos
+- [ ] Fila de la semana actualizada en `bootcamp/README.md`
 - [ ] `./scripts/verificar-enlaces.sh` sin errores
+- [ ] Commit (`feat(week-NN): ...`) + push
 
 ---
 
@@ -556,4 +635,4 @@ interfaces) se evalúa con criterios observables escritos en la rúbrica.
 
 ---
 
-_Última actualización: septiembre de 2026_
+_Última actualización: noviembre de 2026_

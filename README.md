@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/bootcamp-header.svg" alt="Bootcamp Robótica Zero to Hero" width="800">
+  <img src="assets/bootcamp-header.svg" alt="Bootcamp Robótica Zero to Advanced" width="800">
 </p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License CC BY-NC-SA 4.0"></a>
-  <a href="#"><img src="https://img.shields.io/badge/semanas-19-yellow.svg" alt="19 Semanas"></a>
-  <a href="#"><img src="https://img.shields.io/badge/horas-190-orange.svg" alt="190 Horas"></a>
+  <a href="#"><img src="https://img.shields.io/badge/semanas-33-yellow.svg" alt="33 Semanas"></a>
+  <a href="#"><img src="https://img.shields.io/badge/horas-396-orange.svg" alt="396 Horas"></a>
   <a href="#"><img src="https://img.shields.io/badge/ROS2-Jazzy-22314E?logo=ros&logoColor=white" alt="ROS2 Jazzy"></a>
   <a href="#"><img src="https://img.shields.io/badge/Python%20%2B%20C%2B%2B-primera%20clase-4b8bbe.svg" alt="Python + C++"></a>
 </p>
@@ -18,10 +18,11 @@
 
 ## 📋 Descripción
 
-Bootcamp intensivo de **19 semanas (~4.5 meses)** enfocado en **robótica con ROS2**,
-desde cero absoluto en robótica hasta un robot móvil autónomo con SLAM+Nav2 o un brazo
-manipulador con visión y pick&place. Todo verificable en simulación, con **Python y
-C++ como lenguajes de primera clase** — no uno relegado a nota al margen.
+Bootcamp de **33 semanas (~8 meses, 12 h/semana)** enfocado en **robótica con ROS2
+Jazzy**, desde cero absoluto en robótica hasta nivel avanzado, en una **ruta única**:
+robot móvil autónomo (SLAM+Nav2), brazo manipulador con visión (MoveIt2), manipulación
+móvil y un bloque avanzado (multi-robot, tiempo real, SROS2, despliegue, micro-ROS). Todo
+verificable en simulación, con **Python y C++ como lenguajes de primera clase**.
 
 ### 🎯 Objetivos
 
@@ -31,12 +32,16 @@ Al finalizar el bootcamp, los estudiantes serán capaces de:
 - ✅ Escribir nodos equivalentes en `rclpy` y `rclcpp`, y saber cuándo usar cada uno
 - ✅ Modelar un robot en URDF/Xacro y razonar sobre su árbol TF2
 - ✅ Simular un robot completo en Gazebo Harmonic y verificarlo en modo headless
-- ✅ Construir percepción con OpenCV (y detección por deep learning opcional)
+- ✅ Controlar actuadores con `ros2_control`
+- ✅ Construir percepción 2D (OpenCV), 3D (point clouds) y por deep learning
 - ✅ Fusionar sensores con un EKF y justificar cuándo un nodo necesita C++
-- ✅ **Track A**: cartografiar, localizar y navegar de forma autónoma con Nav2,
-  incluidos plugins propios en C++
-- ✅ **Track B**: planificar movimientos, detectar objetos y ejecutar pick&place
-  completo con MoveIt2, incluido un planning adapter en C++
+- ✅ Cartografiar, localizar y navegar de forma autónoma con Nav2, incluidos plugins
+  propios en C++
+- ✅ Planificar movimientos y ejecutar pick&place completo con MoveIt2, incluido un
+  planning adapter en C++
+- ✅ Integrar navegación y manipulación en un manipulador móvil
+- ✅ Operar varios robots, medir latencia con `ros2_tracing`, asegurar con SROS2,
+  desplegar con Docker y CI, y conectar microcontroladores con micro-ROS
 - ✅ Documentar y demostrar un sistema robótico con evidencia reproducible
 
 ### 🚀 ¿Por qué este bootcamp?
@@ -52,27 +57,24 @@ maduros (ROS2 LTS, Nav2, MoveIt2, Gazebo Harmonic), sin rutas experimentales.
 
 ## 🗓️ Estructura del Bootcamp
 
-|         Fase          | Semanas | Horas | Temas Principales                                      |
-| :--------------------: | :-----: | :---: | ------------------------------------------------------ |
-| **1 · Fundamentos ROS2 bilingüe** |   1-5   |  50h  | Grafo/DDS, topics, QoS, servicios, acciones, executors, TF2, URDF — en `rclpy` **y** `rclcpp` |
-| **2 · Simulación y percepción**  |  6-10   |  50h  | Gazebo Harmonic, sensores, OpenCV, fusión EKF, detección avanzada |
-| **3 · Puente común: cinemática** |  11-12  |  20h  | Cinemática diferencial y de brazo, checkpoint de track/dominio |
-| **4 · Especialización (Track A o B)** |  13-17  |  50h  | Track A: SLAM+Nav2 (con plugins C++) · Track B: MoveIt2+visión (con plugins C++) |
-| **5 · Capstone**        |  18-19  |  20h  | Integración final, demo, hardware opcional |
+| Fase | Semanas | Horas | Temas principales |
+| :--: | :-----: | :---: | ----------------- |
+| **1 · Fundamentos ROS2 bilingüe** | 1-6 | 72 h | Grafo/DDS, topics, QoS, servicios, acciones, executors, lifecycle, testing, `rosbag2`, TF2, URDF — en `rclpy` **y** `rclcpp` |
+| **2 · Matemáticas, simulación y control** | 7-12 | 72 h | Transformaciones y cuaterniones, Gazebo Harmonic, sensores, `ros2_control`, OpenCV, EKF |
+| **3 · Robot móvil autónomo** | 13-18 | 72 h | Control clásico, SLAM, AMCL, costmaps, Nav2 con plugins C++, behavior trees, misión |
+| **4 · Manipulación** | 19-24 | 72 h | Cinemática de brazo, MoveIt2, OMPL, percepción 3D, grasping, pick&place |
+| **5 · Avanzado** | 25-30 | 72 h | Deep learning, manipulación móvil, multi-robot, tiempo real, SROS2 + CI, micro-ROS |
+| **6 · Capstone** | 31-33 | 36 h | Arquitectura, implementación y demo del sistema de tu dominio |
 
-**Total: 19 semanas** | **190 horas** de formación intensiva
+**Total: 33 semanas** | **396 horas** · Índice con el estado de cada semana:
+[bootcamp/README.md](bootcamp/README.md) · Decisión de ritmo y ruta única:
+[docs/decision-semanas.md](docs/decision-semanas.md)
 
-### 🔀 Dos Tracks, Un Mismo Camino
+### 🎯 Un solo sistema, tu dominio
 
-Las semanas 01-12 son comunes. En la semana 12 se elige el track:
-
-- **Track A · Móvil Autónomo** — SLAM (`slam_toolbox`) + AMCL + Nav2. Capstone: robot
-  que mapea, se localiza y navega evitando obstáculos.
-- **Track B · Manipulador** — MoveIt2 + visión. Capstone: brazo que detecta un objeto
-  y ejecuta pick&place.
-
-Ver [docs/tracks.md](docs/tracks.md) para la política completa (incluye catálogo de
-misiones/dominios anticopia).
+Eliges una misión en la semana 01 (almacén, laboratorio, inspección industrial...) y la
+mantienes las 33 semanas: cada semana añade una capa al mismo sistema. Ver
+[docs/dominios.md](docs/dominios.md) (incluye el catálogo anticopia).
 
 ---
 
@@ -81,14 +83,13 @@ misiones/dominios anticopia).
 Cada semana incluye:
 
 ```
-bootcamp/week-XX-tema_principal/          # semanas 01-12
-bootcamp/track-{a,b}/week-XX-tema/        # semanas 13-19, por track
+bootcamp/week-XX-tema_principal/
 ├── README.md                 # Objetivos y cronograma
 ├── rubrica-evaluacion.md     # Criterios de evaluación
 ├── 0-assets/                 # Diagramas SVG
 ├── 1-teoria/                 # Material teórico
 ├── 2-practicas/              # Ejercicios guiados (rclpy y/o rclcpp)
-├── 3-proyecto/                # Capa semanal del proyecto (track + dominio)
+├── 3-proyecto/                # Capa semanal del proyecto (tu dominio)
 ├── 4-recursos/                # ebooks-free/, videografia/, webgrafia/
 └── 5-glosario/                 # Términos clave
 ```
@@ -112,9 +113,11 @@ bootcamp/track-{a,b}/week-XX-tema/        # semanas 13-19, por track
 | Python | **3.12.3** (`rclpy`) | Prototipado, orquestación, percepción |
 | C++ | **17** (`rclcpp`) | Hot path, plugins Nav2/MoveIt2 |
 | Gazebo | **Harmonic** (`gz-sim` 8.7.0) | Simulación |
-| Nav2 | rama `jazzy` | Navegación autónoma (Track A) |
-| MoveIt2 | rama `jazzy` | Manipulación (Track B) |
-| OpenCV | **4.10.0.84** | Percepción |
+| `ros2_control` | rama `jazzy` | Control de actuadores |
+| Nav2 | rama `jazzy` | Navegación autónoma |
+| MoveIt2 | rama `jazzy` | Manipulación |
+| OpenCV | `python3-opencv` (apt) | Percepción |
+| uv | **0.13.7** | Tooling Python (nunca `pip`) |
 | Docker | **27.5.1** | Entorno de desarrollo obligatorio |
 
 **Entorno de desarrollo**: Docker + WSLg/X11 para GUI de RViz2/Gazebo (❌ NO instalar
@@ -161,17 +164,17 @@ Cada semana contiene un `README.md` con instrucciones detalladas.
 
 ### Estrategias Didácticas
 
-- 🎯 **Aprendizaje Basado en Proyectos**: un sistema que crece 19 semanas sobre tu
-  track y tu misión, nunca un ejercicio desechable
+- 🎯 **Aprendizaje Basado en Proyectos**: un sistema que crece 33 semanas sobre tu
+  misión, nunca un ejercicio desechable
 - 🔁 **Descomentar para Aprender**: los ejercicios traen código y tests explicados; se
   aprende leyendo, descomentando y viendo pasar los tests
-- 🐍🔧 **Bilingüe desde el día 1**: cada concepto de comunicación (semanas 01-05) se
+- 🐍🔧 **Bilingüe desde el día 1**: cada concepto de comunicación (semanas 01-06) se
   implementa en Python y C++, lado a lado
 - 🖥️ **Simulación antes que hardware**: todo se valida primero en Gazebo headless; el
   hardware físico es siempre una extensión opcional (ver
   [docs/hardware-opcional.md](docs/hardware-opcional.md))
-- 📏 **Mide, no asumas**: benchmarking `rclpy` vs `rclcpp` en las semanas de
-  integración de cada track
+- 📏 **Mide, no asumas**: benchmarking `rclpy` vs `rclcpp` en los checkpoints
+  (semanas 18 y 24) y perfilado con `ros2_tracing` (semana 28)
 
 ---
 
@@ -187,3 +190,11 @@ Ver [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 ## 🔒 Seguridad
 
 Ver [SECURITY.md](SECURITY.md).
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| — | **Inicio del bootcamp** | [Documentación](docs/README.md) |

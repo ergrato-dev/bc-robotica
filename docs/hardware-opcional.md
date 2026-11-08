@@ -5,23 +5,26 @@ El bootcamp es **100% verificable en simulación**. Todo lo de este documento es
 Cada README de semana que tenga una sección de hardware la marca en un bloque
 `> [!NOTE]` al final, separada de los pasos de simulación.
 
-## Track A — Móvil
+## Robot móvil (fases 2, 3 y 5)
 
 | Opción | Componentes | Costo aprox. | Nota |
 |---|---|---|---|
 | **Kit oficial** | TurtleBot3 Burger/Waffle (ROBOTIS) | ~550-1000 USD | Paquetes ROS2 oficiales mantenidos, cero fricción de integración con Nav2 |
-| **DIY económico** | Raspberry Pi 4/5 · 2× motor DC con encoder · driver TB6612FNG · RPLiDAR A1/C1 · IMU (BNO055) · cámara USB · chasis + batería | ~150-250 USD | Requiere driver propio (nodo puente de motores, ver Semana 06); soporte comunitario, no oficial |
+| **DIY económico** | Raspberry Pi 4/5 · 2× motor DC con encoder · driver TB6612FNG · RPLiDAR A1/C1 · IMU (BNO055) · cámara USB · chasis + batería | ~150-250 USD | Requiere driver propio (hardware interface de `ros2_control`, ver Semana 10); soporte comunitario, no oficial |
 
 **Semanas donde aplica** (siempre opcional):
 
 | Semana | Qué se prueba en hardware real |
 |---|---|
-| 06 | Teleop del chasis real en vez de simulado |
-| 13 | SLAM (`slam_toolbox`) sobre sensores reales |
-| 14 | AMCL con el mapa generado en la semana 13 |
-| 15-17 | Nav2 completo (planners, controllers, BT, misión) en el robot físico |
+| 08 | Teleop del chasis real en vez de simulado |
+| 10 | Hardware interface propio de `ros2_control` sobre los motores reales |
+| 12 | Calibrar odometría (radio de rueda, separación entre ruedas) y la covarianza del EKF |
+| 14 | SLAM (`slam_toolbox`) sobre sensores reales |
+| 15 | AMCL con el mapa generado en la semana 14 |
+| 16-18 | Nav2 completo (planners, controllers, BT, misión) en el robot físico |
+| 30 | ESP32 como cliente micro-ROS que publica encoders e IMU |
 
-## Track B — Manipulador
+## Brazo manipulador (fases 4 y 5)
 
 | Opción | Componentes | Costo aprox. | Nota |
 |---|---|---|---|
@@ -32,9 +35,10 @@ Cada README de semana que tenga una sección de hardware la marca en un bloque
 
 | Semana | Qué se prueba en hardware real |
 |---|---|
-| 13 | Mover el brazo real con `moveit_py`/`MoveGroupInterface` |
-| 15 | Percepción con cámara real en vez de simulada |
-| 16-17 | Grasping y pipeline pick&place completo en el brazo físico |
+| 20 | Mover el brazo real con `moveit_py`/`MoveGroupInterface` |
+| 22 | Percepción con cámara real y calibración hand-eye real |
+| 23-24 | Grasping y pipeline pick&place completo en el brazo físico |
+| 26 | Manipulador móvil: TurtleBot3 Waffle + OpenManipulator-X (combinación oficial de ROBOTIS) |
 
 ## Principios
 
@@ -47,3 +51,16 @@ Cada README de semana que tenga una sección de hardware la marca en un bloque
   tiene paquetes ROS2 mantenidos por Open Robotics/ROBOTIS; el DIY puede requerir
   ajustes propios de driver que el bootcamp no puede probar en cada combinación de
   hardware posible
+- **Deja el ajuste de calibración expuesto como parámetro.** El hardware real nunca es el
+  ideal: un PCA9685 corre unos puntos por ciento rápido, un encoder pierde pulsos, una
+  IMU tiene sesgo. Offsets, escalas y límites van en el YAML de parámetros, no en el código
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Decisión de ritmo](decision-semanas.md) | **Hardware opcional** | [Índice de semanas](../bootcamp/README.md) |
+
+← [Volver al inicio del bootcamp](../README.md)
