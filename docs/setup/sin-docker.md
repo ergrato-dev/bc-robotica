@@ -51,7 +51,8 @@ sudo apt install -y \
   ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control \
   ros-jazzy-moveit ros-jazzy-moveit-task-constructor-core \
   ros-jazzy-cv-bridge ros-jazzy-image-transport ros-jazzy-pcl-ros python3-opencv \
-  ros-jazzy-ros2trace ros-jazzy-tracetools-launch ros-jazzy-sros2
+  ros-jazzy-ros2trace ros-jazzy-tracetools-launch ros-jazzy-sros2 \
+  clang-format clang-tidy
 ```
 
 ## 4. Instalar herramientas Python con `uv`

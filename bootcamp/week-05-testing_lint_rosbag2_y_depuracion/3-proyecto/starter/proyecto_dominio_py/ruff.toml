@@ -1,0 +1,8 @@
+# Configuración de ruff para este paquete. ruff la busca subiendo desde cada
+# archivo, así que vale tanto en `ruff check .` como desde el editor.
+target-version = "py312"  # el Python de Ubuntu 24.04, contra el que va rclpy
+
+[lint]
+# E/W: estilo (pycodestyle) · F: errores lógicos (pyflakes) · I: orden de
+# imports · B: trampas habituales (bugbear) · UP: sintaxis moderna (pyupgrade)
+select = ["E", "W", "F", "I", "B", "UP"]
