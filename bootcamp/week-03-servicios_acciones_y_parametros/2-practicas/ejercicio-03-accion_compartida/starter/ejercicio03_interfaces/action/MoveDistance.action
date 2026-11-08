@@ -1,0 +1,10 @@
+# Avanzar en línea recta una distancia. Las tres partes van separadas por ---.
+
+# Goal: lo que pide el cliente.
+float64 distance_m        # distancia a recorrer, en metros (0 < d <= 10)
+---
+# Result: lo que devuelve el server al terminar (con éxito o cancelada).
+float64 traveled_m        # distancia recorrida de verdad, en metros
+---
+# Feedback: lo que el server publica mientras trabaja.
+float64 remaining_m       # distancia que falta, en metros

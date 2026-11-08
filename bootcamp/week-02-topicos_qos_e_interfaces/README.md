@@ -116,6 +116,6 @@ colcon test-result --verbose
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Semana 01](../week-01-fundamentos_ros2_y_workspace/README.md) | **Semana 02** | Semana 03 (pendiente de publicar) |
+| [Semana 01](../week-01-fundamentos_ros2_y_workspace/README.md) | **Semana 02** | [Semana 03](../week-03-servicios_acciones_y_parametros/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)

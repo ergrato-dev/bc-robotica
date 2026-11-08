@@ -14,7 +14,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 |:--:|---|:--:|
 | [01](week-01-fundamentos_ros2_y_workspace/README.md) | Grafo ROS2/DDS, `colcon`, `ament_python` vs `ament_cmake` | ✅ |
 | [02](week-02-topicos_qos_e_interfaces/README.md) | QoS profiles, `.msg` custom (`rosidl`) | ✅ |
-| 03 | Servicios, acciones, parámetros | ⬜ |
+| [03](week-03-servicios_acciones_y_parametros/README.md) | Servicios, acciones, parámetros | ✅ |
 | 04 | Executors, callback groups, component containers, lifecycle nodes | ⬜ |
 | 05 | `pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor` | ⬜ |
 | 06 | Launch files, TF2, URDF/xacro | ⬜ |
