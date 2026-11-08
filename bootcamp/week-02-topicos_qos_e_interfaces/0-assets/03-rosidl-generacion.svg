@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" role="img" aria-label="Generación de interfaces: SensorReading.msg pasa por rosidl_generate_interfaces durante colcon build y produce un módulo Python, un header C++ y el typesupport; un nodo Python y un nodo C++ se comunican por DDS con el mismo tipo">
+  <title>De un .msg al código de dos lenguajes</title>
+  <rect width="840" height="400" fill="#0d1117"/>
+
+  <!-- .msg -->
+  <rect x="30" y="140" width="190" height="110" rx="10" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="125" y="170" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#d29922">SensorReading.msg</text>
+  <text x="48" y="196" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">std_msgs/Header header</text>
+  <text x="48" y="214" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">string sensor_id</text>
+  <text x="48" y="232" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#8b949e">float64 value ...</text>
+
+  <!-- generator -->
+  <rect x="270" y="150" width="170" height="90" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="355" y="185" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#e6edf3">rosidl_generate_</text>
+  <text x="355" y="203" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#e6edf3">interfaces()</text>
+  <text x="355" y="226" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">en colcon build</text>
+  <line x1="220" y1="195" x2="262" y2="195" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="262,189 272,195 262,201" fill="#8b949e"/>
+
+  <!-- outputs -->
+  <rect x="500" y="40" width="300" height="70" rx="10" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="520" y="68" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#e6edf3">Python</text>
+  <text x="520" y="92" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#79c0ff">ejemplo_interfaces.msg.SensorReading</text>
+  <rect x="500" y="160" width="300" height="70" rx="10" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="520" y="188" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#e6edf3">C++</text>
+  <text x="520" y="212" font-family="ui-monospace, Consolas, monospace" font-size="12" fill="#79c0ff">#include ".../msg/sensor_reading.hpp"</text>
+  <rect x="500" y="280" width="300" height="70" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="520" y="308" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#e6edf3">Typesupport</text>
+  <text x="520" y="332" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">serializa el mensaje a bytes para DDS</text>
+  <line x1="440" y1="180" x2="492" y2="80" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="487,74 497,72 495,82" fill="#8b949e"/>
+  <line x1="440" y1="195" x2="490" y2="195" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="490,189 500,195 490,201" fill="#8b949e"/>
+  <line x1="440" y1="210" x2="492" y2="308" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="485,306 495,316 496,304" fill="#8b949e"/>
+
+  <text x="30" y="350" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#3fb950">Un contrato, dos lenguajes: un publisher Python y un</text>
+  <text x="30" y="370" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#3fb950">subscriber C++ con el mismo .msg se entienden sin adaptador</text>
+</svg>

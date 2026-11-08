@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 470" role="img" aria-label="Reliability y durability: con RELIABLE un mensaje perdido se reenvía, con BEST_EFFORT se descarta; un subscriber tardío recibe el último mensaje solo con TRANSIENT_LOCAL en ambos extremos">
+  <title>Políticas QoS: reliability y durability</title>
+  <rect width="840" height="470" fill="#0d1117"/>
+
+  <!-- Reliability -->
+  <text x="40" y="40" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">Reliability: ¿qué pasa si la red pierde el mensaje 2?</text>
+
+  <text x="40" y="86" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#79c0ff">RELIABLE</text>
+  <rect x="160" y="68" width="44" height="28" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="182" y="87" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#e6edf3">1</text>
+  <rect x="224" y="68" width="44" height="28" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="246" y="87" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#f85149">2</text>
+  <rect x="288" y="68" width="44" height="28" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="310" y="87" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#e6edf3">2</text>
+  <rect x="352" y="68" width="44" height="28" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="374" y="87" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#e6edf3">3</text>
+  <text x="420" y="87" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#8b949e">el 2 se reenvía: llegan 1, 2, 3 (más latencia)</text>
+
+  <text x="40" y="136" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#79c0ff">BEST_EFFORT</text>
+  <rect x="160" y="118" width="44" height="28" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="182" y="137" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#e6edf3">1</text>
+  <rect x="224" y="118" width="44" height="28" rx="6" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="246" y="137" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#f85149">2</text>
+  <rect x="288" y="118" width="44" height="28" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="310" y="137" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#e6edf3">3</text>
+  <text x="420" y="137" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#8b949e">el 2 se pierde: llegan 1, 3 (mínima latencia)</text>
+
+  <line x1="40" y1="180" x2="800" y2="180" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Durability -->
+  <text x="40" y="218" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">Durability: el publisher envía "ready" una vez y el subscriber llega después</text>
+
+  <!-- timeline -->
+  <line x1="160" y1="262" x2="780" y2="262" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="780,256 792,262 780,268" fill="#8b949e"/>
+  <text x="800" y="252" text-anchor="end" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">tiempo</text>
+  <circle cx="240" cy="262" r="7" fill="#79c0ff"/>
+  <text x="240" y="290" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">publish("ready")</text>
+  <circle cx="520" cy="262" r="7" fill="#d29922"/>
+  <text x="520" y="290" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3">el subscriber se conecta</text>
+
+  <rect x="40" y="320" width="760" height="56" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="60" y="345" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#79c0ff">VOLATILE</text>
+  <text x="60" y="365" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">El publisher no guarda nada</text>
+  <text x="780" y="355" text-anchor="end" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#f85149">el subscriber nunca recibe "ready"</text>
+
+  <rect x="40" y="392" width="760" height="56" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="60" y="417" font-family="ui-monospace, Consolas, monospace" font-size="14" fill="#79c0ff">TRANSIENT_LOCAL</text>
+  <text x="60" y="437" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">El publisher guarda los últimos depth mensajes</text>
+  <text x="780" y="427" text-anchor="end" font-family="Inter, Roboto, sans-serif" font-size="14" fill="#3fb950">el subscriber recibe "ready" al conectarse</text>
+</svg>
