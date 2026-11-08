@@ -1,5 +1,6 @@
 """Tests mínimos del proyecto. Actualízalos cuando renombres topic y tipo."""
 
+import os
 import time
 
 import pytest
@@ -10,7 +11,9 @@ from proyecto_dominio_py.sensor_stub import STATE_QOS, SensorStub
 
 @pytest.fixture(autouse=True)
 def ros_context():
-    rclpy.init()
+    # Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+    # y así los nodos de otros tests no se mezclan con los de este.
+    rclpy.init(domain_id=os.getpid() % 100 + 1)
     yield
     rclpy.shutdown()
 

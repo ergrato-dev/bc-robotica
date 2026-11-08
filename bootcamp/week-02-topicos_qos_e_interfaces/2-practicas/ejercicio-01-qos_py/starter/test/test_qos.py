@@ -1,6 +1,7 @@
 """Tests del Ejercicio 01. No los edites: pasan solos al completar los pasos
 del starter (range_publisher.py, status_publisher.py, qos_listener.py)."""
 
+import os
 import time
 
 import pytest
@@ -15,7 +16,9 @@ from std_msgs.msg import String
 
 @pytest.fixture(autouse=True)
 def ros_context():
-    rclpy.init()
+    # Dominio DDS propio por proceso: colcon test corre paquetes en paralelo
+    # y así los nodos de otros tests no se mezclan con los de este.
+    rclpy.init(domain_id=os.getpid() % 100 + 1)
     yield
     rclpy.shutdown()
 
