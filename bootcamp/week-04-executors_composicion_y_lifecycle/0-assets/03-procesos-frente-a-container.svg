@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 330" role="img" aria-label="Izquierda: tres nodos en tres procesos; cada mensaje entre ellos se serializa y pasa por DDS. Derecha: los mismos tres nodos como componentes cargados en un único proceso container, con un executor compartido; con intra-process activado, los mensajes pasan entre nodos sin serializarse ni pasar por DDS">
+  <title>Tres procesos frente a un container</title>
+  <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker></defs>
+  <rect width="840" height="330" fill="#0d1117"/>
+  <text x="210" y="34" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">Un proceso por nodo (ros2 run)</text>
+  <text x="630" y="34" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">Un container, tres componentes</text>
+  <line x1="420" y1="20" x2="420" y2="310" stroke="#30363d" stroke-width="2"/>
+  <g font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3" text-anchor="middle">
+    <rect x="30" y="70" width="110" height="60" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/><text x="85" y="97">driver</text><text x="85" y="117" font-size="11" fill="#8b949e">proceso 1</text>
+    <rect x="280" y="70" width="110" height="60" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/><text x="335" y="97">filtro</text><text x="335" y="117" font-size="11" fill="#8b949e">proceso 2</text>
+    <rect x="155" y="220" width="110" height="60" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/><text x="210" y="247">monitor</text><text x="210" y="267" font-size="11" fill="#8b949e">proceso 3</text>
+  </g>
+  <line x1="144" y1="100" x2="276" y2="100" stroke="#8b949e" stroke-width="2" marker-end="url(#b)"/>
+  <line x1="320" y1="134" x2="250" y2="216" stroke="#8b949e" stroke-width="2" marker-end="url(#b)"/>
+  <text x="210" y="168" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">serializar + DDS + copiar</text>
+  <text x="210" y="188" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">en cada mensaje</text>
+  <rect x="450" y="60" width="360" height="240" rx="12" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="630" y="84" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="13" font-weight="700" fill="#3fb950">component_container (1 proceso, 1 executor)</text>
+  <g font-family="Inter, Roboto, sans-serif" font-size="13" fill="#e6edf3" text-anchor="middle">
+    <rect x="470" y="105" width="110" height="50" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/><text x="525" y="135">driver</text>
+    <rect x="680" y="105" width="110" height="50" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/><text x="735" y="135">filtro</text>
+    <rect x="575" y="220" width="110" height="50" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/><text x="630" y="250">monitor</text>
+  </g>
+  <line x1="584" y1="130" x2="676" y2="130" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+  <line x1="720" y1="159" x2="665" y2="216" stroke="#3fb950" stroke-width="2" marker-end="url(#g)"/>
+  <text x="630" y="290" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#3fb950">intra-process: sin serializar ni pasar por DDS</text>
+</svg>

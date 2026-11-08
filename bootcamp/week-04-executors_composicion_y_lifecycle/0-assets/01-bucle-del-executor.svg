@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" role="img" aria-label="Bucle del executor: espera en el wait set a que algo esté listo (timer vencido, mensaje, request), elige los callbacks listos y los ejecuta; con un hilo, uno detrás de otro; con varios hilos, en paralelo si sus grupos lo permiten. Después vuelve a esperar">
+  <title>Qué hace spin()</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker></defs>
+  <rect width="840" height="340" fill="#0d1117"/>
+  <text x="420" y="34" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">Qué hace spin(): el bucle del executor</text>
+  <rect x="30" y="80" width="200" height="150" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="130" y="106" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#e6edf3">Fuentes de eventos</text>
+  <text x="50" y="136" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">timer vencido</text>
+  <text x="50" y="161" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">mensaje en un topic</text>
+  <text x="50" y="186" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">request de un servicio</text>
+  <text x="50" y="211" font-family="Inter, Roboto, sans-serif" font-size="13" fill="#8b949e">goal / response...</text>
+  <line x1="234" y1="155" x2="286" y2="155" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="290" y="110" width="210" height="90" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="395" y="146" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="15" font-weight="700" fill="#e6edf3">1. Esperar (wait set)</text>
+  <text x="395" y="172" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">duerme hasta que algo esté listo</text>
+  <line x1="504" y1="155" x2="556" y2="155" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="560" y="70" width="250" height="80" rx="10" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="685" y="102" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#d29922">2a. Un hilo</text>
+  <text x="685" y="126" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#e6edf3">ejecuta los listos en fila</text>
+  <rect x="560" y="165" width="250" height="80" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="685" y="197" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#3fb950">2b. Varios hilos</text>
+  <text x="685" y="221" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#e6edf3">en paralelo, si sus grupos lo permiten</text>
+  <path d="M685 250 L685 290 L395 290 L395 204" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#a)"/>
+  <text x="540" y="312" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">3. vuelve a esperar (hasta Ctrl+C)</text>
+</svg>

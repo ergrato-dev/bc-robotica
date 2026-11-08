@@ -121,6 +121,6 @@ correr paquetes en paralelo sin que sus nodos se mezclen.
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Semana 02](../week-02-topicos_qos_e_interfaces/README.md) | **Semana 03** | Semana 04 (pendiente de publicar) |
+| [Semana 02](../week-02-topicos_qos_e_interfaces/README.md) | **Semana 03** | [Semana 04](../week-04-executors_composicion_y_lifecycle/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)

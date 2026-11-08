@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 330" role="img" aria-label="Línea de tiempo de 1 segundo. Arriba, un hilo y grupo por defecto: el servicio lento ocupa 0.5 segundos y durante ese tiempo no hay ningún tick del timer. Abajo, varios hilos y un grupo por callback: el servicio ocupa el hilo 2 y el timer sigue con un tick cada 0.1 segundos en el hilo 1">
+  <title>Servicio lento: un hilo frente a varios</title>
+  <rect width="840" height="330" fill="#0d1117"/>
+  <text x="420" y="32" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="17" font-weight="700" fill="#e6edf3">robot/slow_check (0.5 s) y un timer a 10 Hz</text>
+  <text x="30" y="80" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#f85149">Un hilo, grupo por defecto</text>
+  <text x="30" y="112" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">hilo 1</text>
+  <rect x="100" y="96" width="700" height="24" rx="4" fill="#161b22" stroke="#30363d"/>
+  <rect x="380" y="96" width="350" height="24" rx="4" fill="#f85149" fill-opacity="0.35" stroke="#f85149"/>
+  <text x="555" y="113" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#e6edf3">servicio: time.sleep(0.5)</text>
+  <g fill="#58a6ff"><rect x="100" y="96" width="6" height="24"/><rect x="170" y="96" width="6" height="24"/><rect x="240" y="96" width="6" height="24"/><rect x="310" y="96" width="6" height="24"/><rect x="732" y="96" width="6" height="24"/></g>
+  <text x="555" y="142" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#f85149">0 ticks: el timer espera en la fila</text>
+  <text x="30" y="200" font-family="Inter, Roboto, sans-serif" font-size="14" font-weight="700" fill="#3fb950">Varios hilos, un grupo para cada callback</text>
+  <text x="30" y="232" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">hilo 1</text>
+  <rect x="100" y="216" width="700" height="24" rx="4" fill="#161b22" stroke="#30363d"/>
+  <g fill="#58a6ff"><rect x="100" y="216" width="6" height="24"/><rect x="170" y="216" width="6" height="24"/><rect x="240" y="216" width="6" height="24"/><rect x="310" y="216" width="6" height="24"/><rect x="380" y="216" width="6" height="24"/><rect x="450" y="216" width="6" height="24"/><rect x="520" y="216" width="6" height="24"/><rect x="590" y="216" width="6" height="24"/><rect x="660" y="216" width="6" height="24"/><rect x="730" y="216" width="6" height="24"/></g>
+  <text x="30" y="270" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#8b949e">hilo 2</text>
+  <rect x="100" y="254" width="700" height="24" rx="4" fill="#161b22" stroke="#30363d"/>
+  <rect x="380" y="254" width="350" height="24" rx="4" fill="#3fb950" fill-opacity="0.35" stroke="#3fb950"/>
+  <text x="555" y="271" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#e6edf3">servicio: time.sleep(0.5)</text>
+  <text x="555" y="304" text-anchor="middle" font-family="Inter, Roboto, sans-serif" font-size="12" fill="#3fb950">5 ticks durante la comprobación</text>
+  <rect x="100" y="318" width="6" height="8" fill="#58a6ff"/><text x="112" y="326" font-family="Inter, Roboto, sans-serif" font-size="11" fill="#8b949e">= tick del timer</text>
+</svg>
