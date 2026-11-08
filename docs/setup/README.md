@@ -49,4 +49,10 @@ asumen la imagen Docker oficial.
 
 ---
 
-→ Volver a [docs/README.md](../README.md)
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Documentación](../README.md) | **Setup** | [Setup con Docker](con-docker.md) |
+
+← [Volver al inicio del bootcamp](../../README.md)

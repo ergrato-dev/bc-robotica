@@ -48,15 +48,33 @@ source ~/.bashrc
 sudo apt install -y \
   ros-jazzy-ros-gz \
   ros-jazzy-navigation2 ros-jazzy-slam-toolbox ros-jazzy-robot-localization \
-  ros-jazzy-moveit \
-  ros-jazzy-cv-bridge ros-jazzy-image-transport
+  ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control \
+  ros-jazzy-moveit ros-jazzy-moveit-task-constructor-core \
+  ros-jazzy-cv-bridge ros-jazzy-image-transport ros-jazzy-pcl-ros python3-opencv \
+  ros-jazzy-ros2trace ros-jazzy-tracetools-launch ros-jazzy-sros2
 ```
 
-## 4. Instalar herramientas Python
+## 4. Instalar herramientas Python con `uv`
+
+En este bootcamp nunca se usa `pip`. `rclpy` y OpenCV ya vienen por `apt` (paso 3);
+`uv` solo instala el tooling, aislado del Python del sistema:
 
 ```bash
-python3 -m pip install --user --break-system-packages \
-  ruff==0.8.6 mypy==1.13.0 opencv-python==4.10.0.84
+# Qué: instala uv 0.13.7 en ~/.local/bin. Para qué: gestionar herramientas Python sin
+# tocar el Python del sistema, contra el que está compilado rclpy.
+curl -LsSf https://astral.sh/uv/0.13.7/install.sh | sh
+source ~/.bashrc
+
+uv tool install ruff==0.8.6
+uv tool install mypy==1.13.0
+```
+
+Salida esperada de la verificación:
+
+```bash
+uv --version     # uv 0.13.7
+ruff --version   # ruff 0.8.6
+mypy --version   # mypy 1.13.0 (compiled: yes)
 ```
 
 ## 5. Verificar
@@ -77,7 +95,7 @@ cd bc-robotica
 ## 7. Compilar un ejercicio
 
 ```bash
-cd bootcamp/week-01-fundamentos_ros2_y_workspace/2-practicas/01-ejercicio-publisher-py/starter
+cd bootcamp/week-01-fundamentos_ros2_y_workspace/2-practicas/ejercicio-01-publisher_subscriber_py/starter
 colcon build --symlink-install
 source install/setup.bash
 ros2 run <paquete> <nodo>
@@ -96,9 +114,15 @@ directamente `rosdep update`.
 
 Es la razón principal por la que el bootcamp recomienda Docker: una instalación nativa
 comparte el `PATH`/site-packages de Python con cualquier otro proyecto ROS2 que tengas.
-Considera un `venv` para las dependencias Python puras (`ruff`, `mypy`, `opencv-python`)
-si esto te afecta — los paquetes `ros-jazzy-*` en sí no se pueden aislar sin Docker.
+`uv tool` ya aísla `ruff` y `mypy`; las dependencias no-ROS de semanas avanzadas van en
+un `uv venv --system-site-packages` — los paquetes `ros-jazzy-*` en sí no se pueden aislar sin Docker.
 
 ---
 
-→ Volver a [setup/README.md](README.md)
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+| -------- | ------ | --------- |
+| [Setup con Docker](con-docker.md) | **Setup sin Docker** | [Versiones del stack](../stack-versions.md) |
+
+← [Volver al inicio del bootcamp](../../README.md)

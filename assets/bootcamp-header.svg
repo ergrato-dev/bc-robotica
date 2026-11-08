@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-label="Bootcamp Robótica Zero to Hero">
-  <title>Bootcamp Robótica Zero to Hero</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-label="Bootcamp Robótica Zero to Advanced">
+  <title>Bootcamp Robótica Zero to Advanced</title>
   <!-- Background -->
   <rect width="800" height="200" fill="#0d1117"/>
 
@@ -30,12 +30,12 @@
 
   <!-- Subtitle -->
   <text x="180" y="120" font-family="Inter, Roboto, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#4b8bbe">
-    Zero to Hero
+    Zero to Advanced
   </text>
 
   <!-- Tagline -->
   <text x="180" y="155" font-family="Inter, Roboto, -apple-system, sans-serif" font-size="14" font-weight="300" fill="#8b949e">
-    ROS2 · Python + C++ · Simulación primero · 19 semanas
+    ROS2 · Python + C++ · Simulación primero · 33 semanas
   </text>
 
   <!-- Right side decorative code snippet -->

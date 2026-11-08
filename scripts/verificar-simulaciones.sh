@@ -4,7 +4,7 @@
 # hay "¿el mundo/los nodos declarados arrancan sin crashear?".
 #
 # Uso: scripts/verificar-simulaciones.sh week-NN [timeout_segundos]
-#   Busca la carpeta bootcamp/week-NN* o bootcamp/track-*/week-NN* y prueba cada
+#   Busca la carpeta bootcamp/week-NN* y prueba cada
 #   mundo .sdf/.world que encuentre bajo ella (típicamente en 2-practicas/ o 3-proyecto/).
 #
 # Un starter tal cual está en el repo puede no tener aún todos los nodos completos
@@ -24,7 +24,7 @@ if [ -z "$week" ]; then
   exit 2
 fi
 
-dir=$(find bootcamp -mindepth 1 -maxdepth 3 -type d -name "${week}*" | head -1)
+dir=$(find bootcamp -mindepth 1 -maxdepth 1 -type d -name "${week}*" | head -1)
 if [ -z "$dir" ]; then
   echo "No existe ninguna carpeta bootcamp/**/${week}*" >&2
   exit 2
