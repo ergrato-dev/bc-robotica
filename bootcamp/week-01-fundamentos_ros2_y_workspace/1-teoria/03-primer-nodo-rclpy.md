@@ -59,6 +59,7 @@ próximas 33 semanas — vale la pena memorizarlos ahora.
 
 ```python
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from std_msgs.msg import String
 
@@ -84,11 +85,11 @@ def main() -> None:
     node = SensorPublisher()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        rclpy.try_shutdown()  # Ctrl+C ya cerró el contexto
 
 
 if __name__ == "__main__":
@@ -117,6 +118,7 @@ ROS2 la llama cada vez que llega un mensaje, siempre que el nodo esté dentro de
 
 ```python
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from std_msgs.msg import String
 
@@ -139,11 +141,11 @@ def main() -> None:
     node = SensorListener()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        rclpy.try_shutdown()  # Ctrl+C ya cerró el contexto
 ```
 
 Los cuatro argumentos de `create_subscription`: tipo, nombre del topic, callback y
@@ -177,9 +179,10 @@ subscriber que llega tarde no recibe el pasado (salvo con la QoS adecuada, Seman
 - ❌ **Hacer trabajo bloqueante largo dentro de un callback de timer/subscripción**
   (ej. una petición HTTP sin timeout). Bloquea el `spin()` y el nodo deja de procesar
   cualquier otro callback mientras tanto — se retoma en la Semana 04 con executors
-- ❌ **Olvidar `try/except KeyboardInterrupt`** en `main()`. Sin él, `Ctrl+C` imprime un
-  traceback feo en vez de cerrar limpio (funciona igual, pero es una mala primera
-  impresión para quien lea los logs)
+- ❌ **Olvidar el `try/except` de `main()`.** En Jazzy, `Ctrl+C` cierra el contexto de
+  ROS2 y `spin()` lanza `ExternalShutdownException` (o `KeyboardInterrupt`). Sin
+  capturarlas, y sin `rclpy.try_shutdown()` en lugar de `rclpy.shutdown()` (que falla
+  si el contexto ya está cerrado), el nodo se cierra con un traceback y código de error
 
 ## 5. Trucos
 

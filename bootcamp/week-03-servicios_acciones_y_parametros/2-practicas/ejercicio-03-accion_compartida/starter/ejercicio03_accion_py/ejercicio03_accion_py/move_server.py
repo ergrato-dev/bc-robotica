@@ -11,7 +11,7 @@ from ejercicio03_interfaces.action import MoveDistance
 from rclpy.action import ActionServer, CancelResponse, GoalResponse
 from rclpy.action.server import ServerGoalHandle
 from rclpy.callback_groups import ReentrantCallbackGroup
-from rclpy.executors import MultiThreadedExecutor
+from rclpy.executors import ExternalShutdownException, MultiThreadedExecutor
 from rclpy.node import Node
 
 SPEED_MPS = 0.5  # velocidad simulada del robot
@@ -99,11 +99,12 @@ def main() -> None:
     executor.add_node(node)
     try:
         executor.spin()
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":

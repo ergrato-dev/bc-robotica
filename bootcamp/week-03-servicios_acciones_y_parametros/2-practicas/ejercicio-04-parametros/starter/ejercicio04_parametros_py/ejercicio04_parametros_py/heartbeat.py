@@ -5,6 +5,7 @@ Publica "<robot_name>: alive" en robot/heartbeat cada period_s segundos.
 
 import rclpy
 from rcl_interfaces.msg import FloatingPointRange, ParameterDescriptor
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.parameter import Parameter
 from std_msgs.msg import String
@@ -75,11 +76,12 @@ def main() -> None:
     node = Heartbeat()
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        # try_shutdown: Ctrl+C ya cerró el contexto; shutdown() fallaría.
+        rclpy.try_shutdown()
 
 
 if __name__ == "__main__":
