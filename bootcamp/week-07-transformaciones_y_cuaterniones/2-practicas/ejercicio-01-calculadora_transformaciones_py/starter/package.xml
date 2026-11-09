@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ejercicio01_transform_calculator_py</name>
+  <version>0.1.0</version>
+  <description>Ejercicio 01 — calculadora de transformaciones homogéneas con NumPy (Semana 07)</description>
+  <maintainer email="ergrato-dev@example.com">bc-robotica</maintainer>
+  <license>CC-BY-NC-SA-4.0</license>
+
+  <!-- NumPy viene de apt (python3-numpy), compilado para el Python del sistema. -->
+  <exec_depend>python3-numpy</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+  <!-- Solo el test del Paso 4: tf2 como referencia contra la que comparar. -->
+  <test_depend>rclpy</test_depend>
+  <test_depend>geometry_msgs</test_depend>
+  <test_depend>tf2_ros</test_depend>
+  <test_depend>tf2_geometry_msgs</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

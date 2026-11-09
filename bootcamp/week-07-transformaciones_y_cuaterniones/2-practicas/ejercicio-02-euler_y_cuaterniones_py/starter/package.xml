@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ejercicio02_quaternions_py</name>
+  <version>0.1.0</version>
+  <description>Ejercicio 02 — ángulos de Euler, cuaterniones y tf_transformations (Semana 07)</description>
+  <maintainer email="ergrato-dev@example.com">bc-robotica</maintainer>
+  <license>CC-BY-NC-SA-4.0</license>
+
+  <exec_depend>python3-numpy</exec_depend>
+  <!-- apt: ros-jazzy-tf-transformations (trae python3-transforms3d). -->
+  <exec_depend>tf_transformations</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

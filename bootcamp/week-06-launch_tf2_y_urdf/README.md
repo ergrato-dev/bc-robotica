@@ -121,6 +121,6 @@ cargará el URDF de tu proyecto.
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Semana 05](../week-05-testing_lint_rosbag2_y_depuracion/README.md) | **Semana 06** | Semana 07 (pendiente de publicar) |
+| [Semana 05](../week-05-testing_lint_rosbag2_y_depuracion/README.md) | **Semana 06** | [Semana 07](../week-07-transformaciones_y_cuaterniones/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)

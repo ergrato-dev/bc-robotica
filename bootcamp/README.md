@@ -23,7 +23,7 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| 07 | Matrices homogéneas, ángulos de Euler, cuaterniones, `tf_transformations` | ⬜ |
+| [07](week-07-transformaciones_y_cuaterniones/README.md) | Matrices homogéneas, ángulos de Euler, cuaterniones, `tf_transformations` | ✅ |
 | 08 | `gz-sim`, SDF, `ros_gz_bridge`, spawn, teleop | ⬜ |
 | 09 | `sensor_msgs` (LiDAR, cámara, IMU), plugins de sensor, RViz2 | ⬜ |
 | 10 | `ros2_control`, hardware interface, `diff_drive_controller`, `joint_trajectory_controller` | ⬜ |

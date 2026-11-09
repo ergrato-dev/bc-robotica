@@ -111,6 +111,6 @@ Criterios observables más allá de los tests:
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Glosario](5-glosario/README.md) | **Rúbrica** | Semana 07 (pendiente de publicar) |
+| [Glosario](5-glosario/README.md) | **Rúbrica** | [Semana 07](../week-07-transformaciones_y_cuaterniones/README.md) |
 
 ← [Volver a la Semana 06](README.md)
