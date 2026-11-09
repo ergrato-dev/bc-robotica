@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" role="img" aria-label="Anatomía de un launch file. La orden ros2 launch importa patrol.launch.py y llama a generate_launch_description, que devuelve una LaunchDescription con tres acciones: DeclareLaunchArgument radius_m, un Node patrol_broadcaster que lee el argumento con LaunchConfiguration y un Node static_transform_publisher. Cada Node se convierte en un proceso propio; Ctrl+C los para todos con SIGINT">
+  <title>Anatomía de un launch file</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <rect width="860" height="360" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">De ros2 launch a procesos</text>
+  <rect x="20" y="70" width="190" height="120" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="115" y="96" text-anchor="middle" class="h">1 · La orden</text>
+  <text x="115" y="124" text-anchor="middle" class="m">ros2 launch</text>
+  <text x="115" y="142" text-anchor="middle" class="m">&lt;paquete&gt;</text>
+  <text x="115" y="160" text-anchor="middle" class="m">patrol.launch.py</text>
+  <text x="115" y="178" text-anchor="middle" class="m">radius_m:=2.0</text>
+  <line x1="210" y1="130" x2="246" y2="130" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="250" y="60" width="330" height="270" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="415" y="86" text-anchor="middle" class="h">2 · generate_launch_description()</text>
+  <text x="415" y="106" text-anchor="middle" class="s">devuelve una LaunchDescription: acciones en orden</text>
+  <rect x="270" y="122" width="290" height="50" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="285" y="143" class="m">DeclareLaunchArgument</text>
+  <text x="285" y="161" class="s">radius_m · default 1.5 · --show-args</text>
+  <rect x="270" y="186" width="290" height="58" rx="8" fill="#21262d" stroke="#4b8bbe" stroke-width="2"/>
+  <text x="285" y="207" class="m">Node patrol_broadcaster</text>
+  <text x="285" y="226" class="s">parameters: radius_m =</text>
+  <text x="285" y="240" class="m">ParameterValue(LaunchConfiguration)</text>
+  <path d="M560 147 Q600 170 560 214" fill="none" stroke="#d29922" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <rect x="270" y="258" width="290" height="54" rx="8" fill="#21262d" stroke="#00599c" stroke-width="2"/>
+  <text x="285" y="280" class="m">Node static_transform_publisher</text>
+  <text x="285" y="299" class="s">arguments: --x 0.20 --z 0.15 ...</text>
+  <line x1="580" y1="215" x2="636" y2="150" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="580" y1="285" x2="636" y2="262" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="745" y="96" text-anchor="middle" class="h">3 · Un proceso por Node</text>
+  <rect x="640" y="118" width="200" height="64" rx="10" fill="#161b22" stroke="#4b8bbe" stroke-width="2"/>
+  <text x="740" y="144" text-anchor="middle" class="m">patrol_broadcaster-1</text>
+  <text x="740" y="164" text-anchor="middle" class="s">rclpy · radius_m = 2.0</text>
+  <rect x="640" y="230" width="200" height="64" rx="10" fill="#161b22" stroke="#00599c" stroke-width="2"/>
+  <text x="740" y="256" text-anchor="middle" class="m">static_transform_</text>
+  <text x="740" y="274" text-anchor="middle" class="m">publisher-2</text>
+  <text x="740" y="320" text-anchor="middle" class="s">Ctrl+C: SIGINT a todos</text>
+</svg>

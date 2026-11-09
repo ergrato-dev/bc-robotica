@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ejercicio02_tf_listener_cpp</name>
+  <version>0.1.0</version>
+  <description>Ejercicio 02 — listener TF2 en rclcpp e include de launch files (Semana 06)</description>
+  <maintainer email="ergrato-dev@example.com">bc-robotica</maintainer>
+  <license>CC-BY-NC-SA-4.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+
+  <!-- El launch file incluye la patrulla del Ejercicio 01 (otro lenguaje). -->
+  <exec_depend>ejercicio01_tf_broadcaster_py</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

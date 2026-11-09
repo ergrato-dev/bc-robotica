@@ -1,0 +1,12 @@
+# Chequeos de clang-tidy del proyecto (los del Ejercicio 03 de la Semana 05).
+# Si añades uno, comprueba que tu código lo pasa antes de hacer commit.
+Checks: >-
+  -*,
+  bugprone-*,
+  performance-*,
+  modernize-loop-convert,
+  modernize-use-nullptr,
+  readability-braces-around-statements
+WarningsAsErrors: "*"
+# Revisa también tus headers, no solo los .cpp (los de rclcpp quedan fuera).
+HeaderFilterRegex: "proyecto_dominio_cpp/"
