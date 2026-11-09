@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" role="img" aria-label="Todo giro es un ángulo theta alrededor de un eje unitario u. Su cuaternión es (x, y, z, w) igual a (u por sin(theta/2), cos(theta/2)) y mide 1. Ejemplos: identidad (0, 0, 0, 1), 90 grados en yaw (0, 0, 0.707, 0.707), 180 grados en roll (1, 0, 0, 0). q y menos q son el mismo giro: se comparan con el valor absoluto del producto escalar">
+  <title>Cuaternión de un giro eje-ángulo</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}.r{fill:#f85149}.g{fill:#3fb950}.b{fill:#4b8bbe}.o{fill:#d29922}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4b8bbe"/></marker><marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d29922"/></marker></defs>
+  <rect width="860" height="380" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">Un eje, un ángulo y cuatro números</text>
+  <ellipse cx="200" cy="230" rx="130" ry="44" fill="none" stroke="#30363d" stroke-width="2"/>
+  <line x1="200" y1="300" x2="245" y2="80" stroke="#d29922" stroke-width="3" marker-end="url(#mo)"/>
+  <text x="252" y="84" class="h o">u</text><text x="252" y="102" class="s">eje unitario</text>
+  <path d="M120 248 A90 30 0 0 0 290 240" fill="none" stroke="#4b8bbe" stroke-width="3" marker-end="url(#mb)"/>
+  <text x="300" y="262" class="h b" text-anchor="middle">θ</text>
+  <text x="200" y="340" text-anchor="middle" class="s">cualquier giro en 3D es uno solo de θ alrededor de u</text>
+  <rect x="420" y="64" width="420" height="120" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="440" y="92" class="h">El cuaternión, en orden ROS</text>
+  <text x="440" y="122" class="m" style="font-size:15px">q = (u · sin(θ/2), cos(θ/2))</text>
+  <text x="440" y="146" class="s">(x, y, z) = eje escalado · w = cuánto se gira</text>
+  <text x="440" y="166" class="s">x² + y² + z² + w² = 1: solo los unitarios son giros</text>
+  <rect x="420" y="196" width="200" height="164" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="436" y="222" class="h">Ejemplos</text>
+  <text x="436" y="246" class="s">ninguno</text><text x="436" y="262" class="m">(0, 0, 0, 1)</text>
+  <text x="436" y="286" class="s">90° en yaw</text><text x="436" y="302" class="m">(0, 0, 0.707, 0.707)</text>
+  <text x="436" y="326" class="s">180° en roll</text><text x="436" y="342" class="m">(1, 0, 0, 0)</text>
+  <rect x="640" y="196" width="200" height="164" rx="10" fill="#21262d" stroke="#d29922" stroke-width="2"/>
+  <text x="656" y="222" class="h o">q y −q</text>
+  <text x="656" y="246" class="s">son el mismo giro:</text>
+  <text x="656" y="262" class="s">−u con 2π − θ</text>
+  <text x="656" y="290" class="s">compáralos así:</text>
+  <text x="656" y="310" class="m">|q1 · q2| ≈ 1</text>
+  <text x="656" y="338" class="s">nunca componente</text>
+  <text x="656" y="354" class="s">a componente</text>
+</svg>

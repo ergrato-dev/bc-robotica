@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>proyecto_dominio_py</name>
+  <version>0.7.0</version>
+  <description>Proyecto del dominio — capa Python (Semana 07)</description>
+  <maintainer email="ergrato-dev@example.com">bc-robotica</maintainer>
+  <license>CC-BY-NC-SA-4.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>rcl_interfaces</exec_depend>
+  <exec_depend>lifecycle_msgs</exec_depend>
+  <exec_depend>proyecto_dominio_interfaces</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <!-- target_locator: Buffer.transform con PointStamped y el Bool de visibilidad. -->
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <!-- bringup.launch.py: incluye el modelo y arranca la capa C++ con impl:=cpp. -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>proyecto_dominio_description</exec_depend>
+  <exec_depend>proyecto_dominio_cpp</exec_depend>
+
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>launch_testing_ros</test_depend>
+  <test_depend>rosbag2_py</test_depend>
+  <test_depend>xacro</test_depend>
+  <!-- urdfdom trae check_urdf. -->
+  <test_depend>urdfdom</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

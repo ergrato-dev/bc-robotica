@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" role="img" aria-label="Ejes de un robot: x hacia delante en rojo, y a la izquierda en verde, z hacia arriba en azul. Roll es el giro alrededor de x, pitch alrededor de y y yaw alrededor de z. ROS aplica primero roll, luego pitch y luego yaw sobre los ejes fijos del padre: R igual a Rz(yaw) por Ry(pitch) por Rx(roll). A la derecha, el bloqueo de cardán: con pitch de 90 grados, roll y yaw giran alrededor del mismo eje; la terna (0.3, pi/2, 0.2) vuelve como (0.1, pi/2, 0.0), la misma orientación">
+  <title>Roll, pitch y yaw</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}.r{fill:#f85149}.g{fill:#3fb950}.b{fill:#4b8bbe}.o{fill:#d29922}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4b8bbe"/></marker><marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d29922"/></marker></defs>
+  <rect width="860" height="380" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">Tres giros seguidos, en un orden fijo</text>
+  <polygon points="150,230 290,230 330,190 190,190" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <line x1="240" y1="210" x2="362" y2="210" stroke="#f85149" stroke-width="3" marker-end="url(#mr)"/>
+  <line x1="240" y1="210" x2="300" y2="150" stroke="#3fb950" stroke-width="3" marker-end="url(#mg)"/>
+  <line x1="240" y1="210" x2="240" y2="80" stroke="#4b8bbe" stroke-width="3" marker-end="url(#mb)"/>
+  <text x="368" y="214" class="h r">x · delante</text>
+  <text x="306" y="146" class="h g">y · izquierda</text>
+  <text x="248" y="78" class="h b">z · arriba</text>
+  <path d="M336 192 A12 24 0 1 1 336 228" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#mr)"/>
+  <text x="320" y="252" class="s">roll (alabeo)</text>
+  <path d="M268 165 A24 12 -45 1 1 290 182" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#mg)"/>
+  <text x="318" y="178" class="s">pitch (cabeceo)</text>
+  <path d="M220 110 A22 9 0 1 0 262 112" fill="none" stroke="#4b8bbe" stroke-width="2" marker-end="url(#mb)"/>
+  <text x="150" y="104" class="s">yaw (guiñada)</text>
+  <rect x="40" y="280" width="390" height="80" rx="10" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="58" y="306" class="h">Convención de ROS (URDF rpy, tf2)</text>
+  <text x="58" y="330" class="m" style="font-size:14px">R = Rz(yaw) · Ry(pitch) · Rx(roll)</text>
+  <text x="58" y="350" class="s">ejes fijos del padre · roll primero · 'sxyz'</text>
+  <rect x="470" y="70" width="370" height="290" rx="10" fill="#21262d" stroke="#d29922" stroke-width="2"/>
+  <text x="490" y="98" class="h o">Bloqueo de cardán (gimbal lock)</text>
+  <line x1="560" y1="250" x2="560" y2="130" stroke="#4b8bbe" stroke-width="3" marker-end="url(#mb)"/>
+  <line x1="580" y1="250" x2="580" y2="130" stroke="#f85149" stroke-width="3" marker-end="url(#mr)"/>
+  <text x="510" y="126" class="s b">z del padre</text>
+  <text x="588" y="126" class="s r">x del robot</text>
+  <text x="600" y="190" class="s">pitch = 90°: el morro</text>
+  <text x="600" y="206" class="s">apunta hacia arriba y</text>
+  <text x="600" y="222" class="s">roll y yaw giran alrededor</text>
+  <text x="600" y="238" class="s">del mismo eje</text>
+  <text x="490" y="284" class="m">entra (0.3, π/2, 0.2)</text>
+  <text x="490" y="304" class="m">sale  (0.1, π/2, 0.0)</text>
+  <text x="490" y="330" class="s">misma orientación: solo se recupera roll − yaw</text>
+  <text x="490" y="348" class="s">el cuaternión no pierde nada (teoría 04)</text>
+</svg>
