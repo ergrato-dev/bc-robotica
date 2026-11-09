@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" role="img" aria-label="Árbol TF del Ejercicio 02. odom es la raíz. De odom cuelga base_link con una transformación dinámica en /tf, publicada por patrol_broadcaster a 20 Hz, y dock con una estática en /tf_static. De base_link cuelga laser_link, estática, 0.20 m delante y 0.15 m arriba. La consulta lookupTransform de base_link a dock recorre el único camino del árbol: sube de base_link a odom y baja de odom a dock">
+  <title>Árbol TF del Ejercicio 02</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d29922"/></marker></defs>
+  <rect width="860" height="380" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">Un árbol: cada marco tiene un solo padre</text>
+  <g text-anchor="middle">
+    <rect x="330" y="60" width="160" height="50" rx="10" fill="#161b22" stroke="#e6edf3" stroke-width="2"/>
+    <text x="410" y="83" class="h">odom</text><text x="410" y="100" class="s">origen de la odometría</text>
+    <rect x="150" y="180" width="180" height="50" rx="10" fill="#161b22" stroke="#4b8bbe" stroke-width="2"/>
+    <text x="240" y="203" class="h">base_link</text><text x="240" y="220" class="s">el cuerpo del robot</text>
+    <rect x="530" y="180" width="160" height="50" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="610" y="203" class="h">dock</text><text x="610" y="220" class="s">fijo en el suelo</text>
+    <rect x="150" y="300" width="180" height="50" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="240" y="323" class="h">laser_link</text><text x="240" y="340" class="s">atornillado al chasis</text>
+  </g>
+  <line x1="380" y1="110" x2="270" y2="176" stroke="#4b8bbe" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="440" y1="110" x2="580" y2="176" stroke="#3fb950" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#a)"/>
+  <line x1="240" y1="230" x2="240" y2="296" stroke="#3fb950" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#a)"/>
+  <text x="300" y="132" text-anchor="end" class="m">/tf · 20 Hz</text>
+  <text x="300" y="150" text-anchor="end" class="s">patrol_broadcaster</text>
+  <text x="525" y="132" class="m">/tf_static · x = 3.0</text>
+  <text x="525" y="150" class="s">static_transform_publisher</text>
+  <text x="252" y="262" class="m">/tf_static · x 0.20, z 0.15</text>
+  <path d="M335 195 Q410 150 525 195" fill="none" stroke="#d29922" stroke-width="2" stroke-dasharray="3 4" marker-end="url(#w)"/>
+  <rect x="560" y="270" width="280" height="90" rx="10" fill="#21262d" stroke="#d29922" stroke-width="2"/>
+  <text x="575" y="294" class="h">lookupTransform(</text>
+  <text x="575" y="314" class="m">"base_link", "dock", ...)</text>
+  <text x="575" y="336" class="s">sube a odom y baja a dock:</text>
+  <text x="575" y="352" class="s">el único camino entre los dos</text>
+  <line x1="20" y1="72" x2="50" y2="72" stroke="#4b8bbe" stroke-width="3"/><text x="58" y="76" class="s">dinámica (/tf)</text>
+  <line x1="20" y1="94" x2="50" y2="94" stroke="#3fb950" stroke-width="3" stroke-dasharray="7 5"/><text x="58" y="98" class="s">estática (/tf_static)</text>
+</svg>

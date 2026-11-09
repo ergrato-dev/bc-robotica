@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 330" role="img" aria-label="Un nodo lifecycle llevado a active por launch. Uno: launch arranca el LifecycleNode, que nace en unconfigured. Dos: EmitEvent ChangeState configure llama a change_state y el nodo pasa a inactive. Tres: el manejador OnStateTransition, registrado antes, detecta la llegada a inactive y emite ChangeState activate. Cuatro: el nodo llega a active y empieza a publicar. Si on_configure falla, el nodo se queda en unconfigured y no se activa nunca">
+  <title>Eventos de lifecycle en un launch file</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <rect width="860" height="330" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">De unconfigured a active sin teclear transiciones</text>
+  <g text-anchor="middle">
+    <rect x="30" y="80" width="170" height="70" rx="35" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+    <text x="115" y="112" class="h">unconfigured</text><text x="115" y="132" class="s">recién arrancado</text>
+    <rect x="345" y="80" width="170" height="70" rx="35" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+    <text x="430" y="112" class="h">inactive</text><text x="430" y="132" class="s">configurado, mudo</text>
+    <rect x="660" y="80" width="170" height="70" rx="35" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+    <text x="745" y="112" class="h">active</text><text x="745" y="132" class="s">publica</text>
+  </g>
+  <line x1="200" y1="115" x2="341" y2="115" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="515" y1="115" x2="656" y2="115" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <text x="272" y="104" text-anchor="middle" class="m">configure</text>
+  <text x="586" y="104" text-anchor="middle" class="m">activate</text>
+  <rect x="30" y="190" width="250" height="110" rx="10" fill="#21262d" stroke="#30363d"/>
+  <text x="45" y="214" class="h">EmitEvent(ChangeState(</text>
+  <text x="45" y="236" class="m">matches_action(node),</text>
+  <text x="45" y="254" class="m">TRANSITION_CONFIGURE))</text>
+  <text x="45" y="282" class="s">se emite al arrancar</text>
+  <line x1="200" y1="190" x2="260" y2="128" stroke="#8b949e" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <rect x="320" y="190" width="300" height="110" rx="10" fill="#21262d" stroke="#d29922" stroke-width="2"/>
+  <text x="335" y="214" class="h">RegisterEventHandler(</text>
+  <text x="335" y="236" class="m">OnStateTransition(goal_state=</text>
+  <text x="335" y="254" class="m">"inactive", entities=[activate]))</text>
+  <text x="335" y="282" class="s">se registra ANTES del configure</text>
+  <line x1="430" y1="150" x2="430" y2="186" stroke="#d29922" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="560" y1="190" x2="586" y2="128" stroke="#8b949e" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+  <rect x="660" y="190" width="170" height="110" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="745" y="216" text-anchor="middle" class="h">Si configure falla</text>
+  <text x="745" y="240" text-anchor="middle" class="s">el nodo sigue en</text>
+  <text x="745" y="258" text-anchor="middle" class="s">unconfigured: nunca</text>
+  <text x="745" y="276" text-anchor="middle" class="s">llega a inactive ni</text>
+  <text x="745" y="294" text-anchor="middle" class="s">se activa</text>
+</svg>

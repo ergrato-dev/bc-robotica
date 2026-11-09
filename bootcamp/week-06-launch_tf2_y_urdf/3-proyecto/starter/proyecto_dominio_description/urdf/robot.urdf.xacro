@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+  Modelo del robot de tu misión. Unidades SI (REP 103); ejes de cada marco:
+  x hacia delante, y a la izquierda, z hacia arriba.
+  TODO: cambia name="dominio_robot" y las medidas por las de tu robot.
+-->
+<robot name="dominio_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- TODO: medidas de tu robot, en metros y kilogramos. -->
+  <xacro:property name="chassis_x" value="0.50"/>
+  <xacro:property name="chassis_y" value="0.40"/>
+  <xacro:property name="chassis_z" value="0.20"/>
+  <xacro:property name="chassis_mass" value="12.0"/>
+
+  <!-- Inercia de una caja maciza (teoría 05). -->
+  <xacro:macro name="box_inertial" params="mass x y z">
+    <inertial>
+      <mass value="${mass}"/>
+      <inertia ixx="${mass * (y*y + z*z) / 12}" ixy="0" ixz="0"
+               iyy="${mass * (x*x + z*z) / 12}" iyz="0"
+               izz="${mass * (x*x + y*y) / 12}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- base_link: el cuerpo del robot. Es el marco que mueve sensor_stub
+       (odom -> base_link); no le cambies el nombre (REP 105). -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${chassis_x} ${chassis_y} ${chassis_z}"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${chassis_x} ${chassis_y} ${chassis_z}"/>
+      </geometry>
+    </collision>
+    <xacro:box_inertial mass="${chassis_mass}" x="${chassis_x}" y="${chassis_y}" z="${chassis_z}"/>
+  </link>
+
+  <!--
+    TODO: el sensor principal de tu misión (tabla del README del proyecto).
+    Renombra sensor_link (camera_link, thermal_camera_link...), cambia su
+    posición y su forma, y actualiza SENSOR_FRAME en los tests.
+  -->
+  <link name="sensor_link">
+    <visual>
+      <geometry>
+        <box size="0.05 0.10 0.05"/>
+      </geometry>
+    </visual>
+    <xacro:box_inertial mass="0.2" x="0.05" y="0.10" z="0.05"/>
+  </link>
+
+  <joint name="sensor_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_link"/>
+    <origin xyz="${chassis_x / 2} 0 ${chassis_z / 2}" rpy="0 0 0"/>
+  </joint>
+
+  <!--
+    TODO (Requisito 2): las ruedas motrices, con una macro como la del
+    Ejercicio 03: articulaciones continuous con eje y, una a cada lado.
+    Más la rueda loca u otro apoyo si tu robot lo tiene.
+  -->
+
+</robot>

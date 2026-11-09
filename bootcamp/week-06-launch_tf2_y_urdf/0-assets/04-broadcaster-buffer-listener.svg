@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 340" role="img" aria-label="Broadcasters, topics y listener del Ejercicio 02. patrol_broadcaster, en rclpy, publica odom a base_link en /tf. Dos static_transform_publisher publican base_link a laser_link y odom a dock en /tf_static. Dentro de dock_monitor, en rclcpp, el TransformListener se suscribe a los dos topics desde su propio hilo y llena el Buffer, que guarda 10 segundos de historial. El timer del nodo llama a lookupTransform base_link dock, calcula distancia y rumbo con dock_reading y publica la distancia en robot/dock_distance_m">
+  <title>Broadcaster, Buffer y TransformListener</title>
+  <style>text{font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;fill:#e6edf3;font-size:13px}.m{font-family:ui-monospace,"JetBrains Mono",Consolas,monospace;fill:#79c0ff;font-size:12px}.s{fill:#8b949e;font-size:12px}.t{font-size:18px;font-weight:700}.h{font-size:14px;font-weight:700}</style><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d29922"/></marker></defs>
+  <rect width="860" height="340" fill="#0d1117"/>
+  <text x="430" y="34" text-anchor="middle" class="t">Quien sabe publica; quien necesita pregunta al Buffer</text>
+  <rect x="20" y="70" width="200" height="60" rx="10" fill="#161b22" stroke="#4b8bbe" stroke-width="2"/>
+  <text x="35" y="94" class="h">patrol_broadcaster</text><text x="35" y="116" class="s">rclpy · TransformBroadcaster</text>
+  <rect x="20" y="170" width="200" height="60" rx="10" fill="#161b22" stroke="#00599c" stroke-width="2"/>
+  <text x="35" y="194" class="h">static_transform_</text><text x="35" y="214" class="h">publisher × 2</text>
+  <rect x="270" y="80" width="120" height="40" rx="20" fill="#21262d" stroke="#30363d"/><text x="330" y="105" text-anchor="middle" class="m">/tf</text>
+  <rect x="270" y="180" width="120" height="40" rx="20" fill="#21262d" stroke="#30363d"/><text x="330" y="205" text-anchor="middle" class="m">/tf_static</text>
+  <text x="330" y="240" text-anchor="middle" class="s">transient local</text>
+  <line x1="220" y1="100" x2="266" y2="100" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="220" y1="200" x2="266" y2="200" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="430" y="60" width="410" height="260" rx="10" fill="#161b22" stroke="#00599c" stroke-width="2"/>
+  <text x="445" y="84" class="h">dock_monitor (rclcpp)</text>
+  <rect x="450" y="100" width="170" height="70" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="535" y="126" text-anchor="middle" class="m">TransformListener</text><text x="535" y="148" text-anchor="middle" class="s">hilo propio</text>
+  <line x1="390" y1="100" x2="446" y2="125" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="390" y1="200" x2="446" y2="148" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="660" y="100" width="160" height="70" rx="8" fill="#21262d" stroke="#d29922" stroke-width="2"/>
+  <text x="740" y="126" text-anchor="middle" class="m">Buffer</text><text x="740" y="148" text-anchor="middle" class="s">10 s de historial</text>
+  <line x1="620" y1="135" x2="656" y2="135" stroke="#8b949e" stroke-width="2" marker-end="url(#a)"/>
+  <rect x="450" y="200" width="370" height="100" rx="8" fill="#21262d" stroke="#30363d"/>
+  <text x="465" y="224" class="s">timer 10 Hz:</text>
+  <text x="465" y="246" class="m">lookupTransform("base_link", "dock")</text>
+  <text x="465" y="266" class="m">dock_reading(t.transform)</text>
+  <text x="465" y="286" class="m">publish(robot/dock_distance_m)</text>
+  <line x1="740" y1="170" x2="740" y2="196" stroke="#d29922" stroke-width="2" marker-end="url(#a)"/>
+</svg>

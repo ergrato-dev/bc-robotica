@@ -121,6 +121,6 @@ correr paquetes en paralelo sin que sus nodos se mezclen.
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Semana 04](../week-04-executors_composicion_y_lifecycle/README.md) | **Semana 05** | Semana 06 (pendiente de publicar) |
+| [Semana 04](../week-04-executors_composicion_y_lifecycle/README.md) | **Semana 05** | [Semana 06](../week-06-launch_tf2_y_urdf/README.md) |
 
 ← [Volver al inicio del bootcamp](../../README.md)

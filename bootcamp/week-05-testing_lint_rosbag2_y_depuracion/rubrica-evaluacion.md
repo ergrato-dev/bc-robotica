@@ -104,6 +104,6 @@ La capa del proyecto del dominio (`3-proyecto/`):
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Glosario](5-glosario/README.md) | **Rúbrica** | Semana 06 (pendiente de publicar) |
+| [Glosario](5-glosario/README.md) | **Rúbrica** | [Semana 06](../week-06-launch_tf2_y_urdf/README.md) |
 
 ← [Volver a la Semana 05](README.md)
