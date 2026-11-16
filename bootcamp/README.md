@@ -12,18 +12,18 @@ La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está p
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [01](week-01-fundamentos_ros2_y_workspace/README.md) | Grafo ROS2/DDS, `colcon`, `ament_python` vs `ament_cmake` | ✅ |
-| [02](week-02-topicos_qos_e_interfaces/README.md) | QoS profiles, `.msg` custom (`rosidl`) | ✅ |
-| [03](week-03-servicios_acciones_y_parametros/README.md) | Servicios, acciones, parámetros | ✅ |
-| [04](week-04-executors_composicion_y_lifecycle/README.md) | Executors, callback groups, component containers, lifecycle nodes | ✅ |
-| [05](week-05-testing_lint_rosbag2_y_depuracion/README.md) | `pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor` | ✅ |
-| [06](week-06-launch_tf2_y_urdf/README.md) | Launch files, TF2, URDF/xacro | ✅ |
+| [01](week-01-fundamentos_ros2_y_workspace/README.md) | [Grafo ROS2/DDS, `colcon`, `ament_python` vs `ament_cmake`](week-01-fundamentos_ros2_y_workspace/README.md) | ✅ |
+| [02](week-02-topicos_qos_e_interfaces/README.md) | [QoS profiles, `.msg` custom (`rosidl`)](week-02-topicos_qos_e_interfaces/README.md) | ✅ |
+| [03](week-03-servicios_acciones_y_parametros/README.md) | [Servicios, acciones, parámetros](week-03-servicios_acciones_y_parametros/README.md) | ✅ |
+| [04](week-04-executors_composicion_y_lifecycle/README.md) | [Executors, callback groups, component containers, lifecycle nodes](week-04-executors_composicion_y_lifecycle/README.md) | ✅ |
+| [05](week-05-testing_lint_rosbag2_y_depuracion/README.md) | [`pytest`/`gtest`, `launch_testing`, `ruff`/`mypy`/`clang-tidy`, `rosbag2`, `ros2 doctor`](week-05-testing_lint_rosbag2_y_depuracion/README.md) | ✅ |
+| [06](week-06-launch_tf2_y_urdf/README.md) | [Launch files, TF2, URDF/xacro](week-06-launch_tf2_y_urdf/README.md) | ✅ |
 
 ### Fase 2 — Matemáticas, simulación y control (S07-12, 72 h)
 
 | Semana | Tema | Estado |
 |:--:|---|:--:|
-| [07](week-07-transformaciones_y_cuaterniones/README.md) | Matrices homogéneas, ángulos de Euler, cuaterniones, `tf_transformations` | ✅ |
+| [07](week-07-transformaciones_y_cuaterniones/README.md) | [Matrices homogéneas, ángulos de Euler, cuaterniones, `tf_transformations`](week-07-transformaciones_y_cuaterniones/README.md) | ✅ |
 | 08 | `gz-sim`, SDF, `ros_gz_bridge`, spawn, teleop | ⬜ |
 | 09 | `sensor_msgs` (LiDAR, cámara, IMU), plugins de sensor, RViz2 | ⬜ |
 | 10 | `ros2_control`, hardware interface, `diff_drive_controller`, `joint_trajectory_controller` | ⬜ |
