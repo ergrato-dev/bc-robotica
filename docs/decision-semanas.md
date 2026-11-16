@@ -8,7 +8,7 @@
 - **Ruta única, sin tracks**: el objetivo es nivel avanzado, y un perfil avanzado en ROS2
   necesita navegación **y** manipulación (la manipulación móvil de la semana 26 exige las
   dos). Elegir track dejaba a cada estudiante con la mitad del stack. La anticopia queda en
-  el nivel de dominio/misión ([`dominios.md`](dominios.md)).
+  el nivel de dominio/misión.
 - **Por qué estas semanas extra frente a la versión anterior**: matemáticas de
   transformaciones (07), `ros2_control` (10), testing/`rosbag2` con semana propia (05),
   control clásico (13), cinemática de brazo propia (19), percepción 3D (22), y el bloque
@@ -25,6 +25,5 @@
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Política de dominios](dominios.md) | **Decisión de ritmo** | [Hardware opcional](hardware-opcional.md) |
 
 ← [Volver al inicio del bootcamp](../README.md)

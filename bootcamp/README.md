@@ -1,6 +1,6 @@
 # Bootcamp Robótica — Zero to Advanced
 
-33 semanas · 12 h/semana · 396 horas. Autoestudio asincrónico sobre ROS2 Jazzy, en una ruta única: robot móvil autónomo, brazo manipulador, manipulación móvil y bloque avanzado, sobre un solo sistema de **tu dominio** que crece cada semana ([`docs/dominios.md`](../docs/dominios.md)).
+33 semanas · 12 h/semana · 396 horas. Autoestudio asincrónico sobre ROS2 Jazzy, en una ruta única: robot móvil autónomo, brazo manipulador, manipulación móvil y bloque avanzado, sobre un solo sistema de **tu dominio** que crece cada semana.
 
 La columna **Estado** dice la verdad sobre el repositorio: ✅ la semana está publicada al estándar de [`CLAUDE.md`](../CLAUDE.md), ⬜ todavía no se escribió. Las semanas sin publicar no llevan enlace. El contenido se escribe en orden.
 

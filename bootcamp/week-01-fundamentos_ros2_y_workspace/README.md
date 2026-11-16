@@ -15,7 +15,7 @@
 - Programación previa en Python y/o C++ (este bootcamp no enseña sintaxis básica)
 - Entorno configurado — ver [docs/setup/con-docker.md](../../docs/setup/con-docker.md)
 - Ninguna experiencia previa en ROS2 o robótica
-- Haber elegido tu misión/dominio del catálogo de [docs/dominios.md](../../docs/dominios.md)
+- Tener la misión/dominio que te asignó el instructor
   (o tenerla asignada)
 
 ## 🗂️ Estructura de la Semana

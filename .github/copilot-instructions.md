@@ -233,7 +233,7 @@ week-XX-tema_principal/
 ### 📁 Carpetas Raíz
 
 - **`assets/`**: recursos visuales globales (header del README)
-- **`docs/`**: documentación transversal (setup, `stack-versions.md`, `dominios.md`,
+- **`docs/`**: documentación transversal (setup, `stack-versions.md`,
   `decision-semanas.md`, `hardware-opcional.md`, `dependency-security-policy.md`)
 - **`scripts/`**: `verificar-enlaces.sh`, `verificar-simulaciones.sh`
 - **`bootcamp/`**: contenido semanal
@@ -301,12 +301,12 @@ El README del proyecto incluye:
 3. Cómo verificarlo: `colcon build && colcon test`, y si aplica,
    `scripts/verificar-simulaciones.sh week-NN`
 4. Criterios de calidad más allá de lo automatizable
-5. Adaptación al dominio con ejemplos para al menos las misiones del catálogo de
-   `docs/dominios.md`
+5. Adaptación al dominio con ejemplos para al menos las misiones del catálogo
+   (repo privado `bc-dominios`, `catalogos/bc-robotica.md`)
 
 **Política de dominio**: el estudiante declara su dominio/misión en la Semana 01 y no
 cambia después; cada misión tiene una parte móvil y una de manipulación, así que sirve
-para las 33 semanas. Ver `docs/dominios.md`.
+para las 33 semanas. El catálogo de dominios lo tiene el instructor.
 
 ### 4. **Recursos** (`4-recursos/`)
 

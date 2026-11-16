@@ -9,7 +9,6 @@ Esta carpeta contiene documentación general que aplica a todo el bootcamp.
 | [setup/](setup/README.md) | ⚙️ Configuración del entorno (con y sin Docker) |
 | [stack-versions.md](stack-versions.md) | Versiones oficiales de ROS2, Gazebo, Nav2, MoveIt2 y dependencias |
 | [dependency-security-policy.md](dependency-security-policy.md) | 🔒 Política de seguridad, regla de oro (versiones exactas, sin `:latest`) |
-| [dominios.md](dominios.md) | 🎯 Política de dominios/misiones — anticopia |
 | [decision-semanas.md](decision-semanas.md) | 📐 ADR: por qué 33 semanas × 12 h y ruta única |
 | [hardware-opcional.md](hardware-opcional.md) | 🔧 BOM de referencia para quien quiera hardware físico |
 

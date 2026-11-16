@@ -73,8 +73,8 @@ maduros (ROS2 LTS, Nav2, MoveIt2, Gazebo Harmonic), sin rutas experimentales.
 ### 🎯 Un solo sistema, tu dominio
 
 Eliges una misión en la semana 01 (almacén, laboratorio, inspección industrial...) y la
-mantienes las 33 semanas: cada semana añade una capa al mismo sistema. Ver
-[docs/dominios.md](docs/dominios.md) (incluye el catálogo anticopia).
+mantienes las 33 semanas: cada semana añade una capa al mismo sistema. El instructor
+asigna la misión.
 
 ---
 

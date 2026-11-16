@@ -4,8 +4,8 @@
 
 El arranque del workspace del sistema que vas a construir durante las 33 semanas: un
 paquete `ament_python` y un paquete `ament_cmake`, cada uno con un nodo `sensor_stub`
-que **publica el estado simulado de tu dominio**. Aquí declaras tu **misión/dominio**
-(catálogo en [`docs/dominios.md`](../../../docs/dominios.md)) y la mantienes hasta el
+que **publica el estado simulado de tu dominio**. Aquí declaras tu **misión/dominio** (te la asigna el
+instructor) y la mantienes hasta el
 capstone.
 
 ## Por qué va aquí

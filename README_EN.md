@@ -73,7 +73,7 @@ and mature stacks (ROS2 LTS, Nav2, MoveIt2, Gazebo Harmonic), no experimental pa
 
 You pick a mission in week 01 (warehouse, lab, industrial inspection...) and keep it for
 all 33 weeks: each week adds a layer to the same system. See
-[docs/dominios.md](docs/dominios.md) (includes the anti-plagiarism catalog).
+The instructor assigns the mission.
 
 ---
 

@@ -36,8 +36,8 @@ Léelo **antes** de generar contenido. No deduzcas el patrón mirando archivos s
 5. **Todo código compila/lintea limpio**: Python con `ruff`+`mypy`; C++ con
    `-Wall -Wextra -Wpedantic -Werror` + `clang-format`.
 6. **Ningún plugin `pluginlib` se escribe en Python** — no está soportado.
-7. **Anticopia por dominio/misión** (fijo en semana 01, sin tracks) — ver
-   `docs/dominios.md`.
+7. **Anticopia por dominio/misión** (fijo en semana 01, sin tracks) — catálogo en el repo
+   privado `bc-dominios` (`catalogos/bc-robotica.md`).
 8. **Cero absoluto de robótica de verdad.** Cada término técnico (QoS, TF, costmap,
    IK...) se define la primera vez que aparece.
 9. **Sin `solution/`.** El código comentado de los ejercicios es la solución.

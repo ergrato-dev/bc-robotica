@@ -126,6 +126,5 @@ _Documento creado: 29/09/2026_
 
 | Anterior | Actual | Siguiente |
 | -------- | ------ | --------- |
-| [Versiones del stack](stack-versions.md) | **Seguridad de dependencias** | [Política de dominios](dominios.md) |
 
 ← [Volver al inicio del bootcamp](../README.md)
